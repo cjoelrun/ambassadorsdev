@@ -36,6 +36,6 @@ Ambassadors::Application.configure do
   config.active_support.deprecation = :stderr
   
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'example.com' }
+  config.action_mailer.default_url_options = { :host => 'utsaambassadors.org' }
 
 end
