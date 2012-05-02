@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	rolify
+  rolify
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
