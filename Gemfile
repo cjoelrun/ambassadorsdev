@@ -6,6 +6,7 @@ gem "bootstrap-sass", ">= 2.0.1"
 gem 'jquery-rails'
 gem "devise", ">= 2.1.0.rc"
 gem "devise_invitable", ">= 1.0.1"
+gem 'devise-encryptable'
 gem "cancan", ">= 1.6.7"
 gem "rolify", ">= 3.1.0"
 
@@ -41,6 +42,3 @@ end
 group :production do
   gem 'pg', '0.12.2'
 end
-
-
-
