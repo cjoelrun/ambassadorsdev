@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120502160703) do
+ActiveRecord::Schema.define(:version => 20120530223408) do
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -48,6 +48,22 @@ ActiveRecord::Schema.define(:version => 20120502160703) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.date     "birthday"
+    t.string   "local_street"
+    t.string   "local_city"
+    t.string   "local_state"
+    t.string   "local_zip"
+    t.string   "local_apt"
+    t.string   "permanent_street"
+    t.string   "permanent_city"
+    t.string   "permanent_state"
+    t.string   "permanent_zip"
+    t.string   "permanent_apt"
+    t.boolean  "same_address"
+    t.boolean  "tour_trained"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -2,26 +2,81 @@
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
-<p><%= f.label :name %><br />
-<%= f.text_field :name %></p>
+  <p><%= f.label :first_name %>
+    <%= f.text_field :first_name %></p>
 
-  <div><%= f.label :email %><br />
+  <div><%= f.label :last_name %>
+  <%= f.text_field :last_name %></div>
+
+  <div><%= f.label :email %>
   <%= f.email_field :email %></div>
 
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <div><%= f.label :phone %>
+  <%= f.text_field :phone %></div>
+
+  <div><%= f.label :birthday %>
+  <%= f.date_select(:birthday, :start_year => 1970) %></div>
+
+  <div><%= f.label :local_street %>
+  <%= f.text_field :local_street %></div>
+
+  <div><%= f.label :local_city %>
+  <%= f.text_field :local_city %></div>
+
+  <div><%= f.label :local_city %>
+  <%= f.text_field :local_city %></div>
+
+  <div><%= f.label :local_state %>
+  <%= f.text_field :local_state %></div>
+
+  <div><%= f.label :local_zip %>
+  <%= f.text_field :local_zip %></div>
+
+  <div><%= f.label :local_apt %>
+  <%= f.text_field :local_apt %></div>
+
+  <div><%= f.label :same_address %>
+  <%= f.check_box :same_address, {checked: true} %></div>
+
+  <div id="permanent_address" class="hide">
+
+  <div><%= f.label :permanent_street %>
+  <%= f.text_field :permanent_street %></div>
+
+  <div><%= f.label :permanent_city %>
+  <%= f.text_field :permanent_city %></div>
+
+  <div><%= f.label :permanent_city %>
+  <%= f.text_field :permanent_city %></div>
+
+  <div><%= f.label :permanent_state %>
+  <%= f.text_field :permanent_state %></div>
+
+  <div><%= f.label :permanent_zip %>
+  <%= f.text_field :permanent_zip %></div>
+
+  <div><%= f.label :permanent_apt %>
+  <%= f.text_field :permanent_apt %></div>
+
+  </div>
+
+  <div><%= f.label :tour_trained %>
+  <%= f.check_box :tour_trained %></div>
+  
+  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
   <%= f.password_field :current_password %></div>
 
   <div><%= f.submit "Update" %></div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<!-- <h3>Cancel my account</h3> -->
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+<!-- <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p> -->
 
 <%= link_to "Back", :back %>
