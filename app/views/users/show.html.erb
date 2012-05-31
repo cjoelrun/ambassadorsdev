@@ -4,12 +4,16 @@
 <p>Phone: <%= @user.phone if @user.phone %></p>
 <p>Birthday: <%= @user.birthday if @user.birthday %></p>
 
+<address>
 <p>Local Address:</p>
 <%= local_address(@user.id) %>
+</address>
 
 <% if @user.same_address == false %>
-  <p>Permanent Address:</p>
-  <%= permanent_address(@user.id) %>
+  <address>
+    <p>Permanent Address:</p>
+    <%= permanent_address(@user.id) %>
+  </address>
 <% end %>
 
 <p>Tour Trained: <%= @user.tour_trained if @user.tour_trained %></p>

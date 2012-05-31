@@ -1,82 +1,164 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <p><%= f.label :first_name %>
-    <%= f.text_field :first_name %></p>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "form-horizontal" }) do |f| %>
+  <fieldset>
+    <%= devise_error_messages! %>
 
-  <div><%= f.label :last_name %>
-  <%= f.text_field :last_name %></div>
+    <div class="control-group">
+      <%= f.label :first_name, :class => "control-label" %>
+      <div class="controls">
+	<%= f.text_field :first_name %>
+      </div>
+    </div>
 
-  <div><%= f.label :email %>
-  <%= f.email_field :email %></div>
+    <div class="control-group">
+      <%= f.label :last_name, :class => "control-label" %>
+      <div class="controls">
+	<%= f.text_field :last_name %>
+      </div>
+    </div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+    <div class="control-group">
+      <%= f.label :email, :class => "control-label" %>
+      <div class="controls">
+	<%= f.email_field :email %>
+      </div>
+    </div>
 
-  <div><%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %></div>
+    <div class="control-group">
+      <%= f.label :password, :class => "control-label" %> 
+      <div class="controls">
+	<%= f.password_field :password, :autocomplete => "off" %>
+	<p class="help-block">Leave blank if you don't want to change it</p>
+      </div>
+    </div>
 
-  <div><%= f.label :phone %>
-  <%= f.text_field :phone %></div>
+    <div class="control-group">
+      <%= f.label :password_confirmation, :class => "control-label" %>
+      <div class="controls">
+	<%= f.password_field :password_confirmation %>
+      </div>
+    </div>
 
-  <div><%= f.label :birthday %>
-  <%= f.date_select(:birthday, :start_year => 1970) %></div>
+    <div class="control-group">
+      <%= f.label :phone, :class => "control-label" %>
+      <div class="controls">
+	<%= f.text_field :phone %>
+      </div>
+    </div>
 
-  <div><%= f.label :local_street %>
-  <%= f.text_field :local_street %></div>
+    <div class="control-group">
+      <%= f.label :birthday, :class => "control-label" %>
+      <div class="controls">
+	<%= f.date_select(:birthday, :start_year => 1970) %>
+      </div>
+    </div>
 
-  <div><%= f.label :local_city %>
-  <%= f.text_field :local_city %></div>
+    <div class="control-group">
+      <%= f.label :local_street, :class => "control-label" %>
+      <div class="controls">
+	<%= f.text_field :local_street %>
+      </div>
+    </div>
 
-  <div><%= f.label :local_city %>
-  <%= f.text_field :local_city %></div>
+    <div class="control-group">
+      <%= f.label :local_city, :class => "control-label" %>
+      <div class="controls">
+	<%= f.text_field :local_city %>
+      </div>
+    </div>
 
-  <div><%= f.label :local_state %>
-  <%= f.text_field :local_state %></div>
+    <div class="control-group">
+      <%= f.label :local_state, :class => "control-label" %>
+      <div class="controls">
+	<%= f.text_field :local_state %>
+      </div>
+    </div>
 
-  <div><%= f.label :local_zip %>
-  <%= f.text_field :local_zip %></div>
+    <div class="control-group">
+      <%= f.label :local_zip, :class => "control-label" %>
+      <div class="controls">
+	<%= f.text_field :local_zip %>
+      </div>
+    </div>
 
-  <div><%= f.label :local_apt %>
-  <%= f.text_field :local_apt %></div>
+    <div class="control-group">
+      <%= f.label :local_apt, :class => "control-label" %>
+      <div class="controls">
+	<%= f.text_field :local_apt %>
+      </div>
+    </div>
 
-  <div><%= f.label :same_address %>
-  <%= f.check_box :same_address, {checked: true} %></div>
+    <div class="control-group">
+      <%= f.label :same_address, :class => "control-label" %>
+      <div class="controls">
+	<%= f.check_box :same_address, {checked: true} %>
+      </div>
+    </div>
 
-  <div id="permanent_address" class="hide">
+    <div id="permanent_address" class="hide">
 
-  <div><%= f.label :permanent_street %>
-  <%= f.text_field :permanent_street %></div>
+      <div class="control-group">
+	<%= f.label :permanent_street, :class => "control-label" %>
+	<div class="controls">
+	  <%= f.text_field :permanent_street %>
+	</div>
+      </div>
 
-  <div><%= f.label :permanent_city %>
-  <%= f.text_field :permanent_city %></div>
+      <div class="control-group">
+	<%= f.label :permanent_city, :class => "control-label" %>
+	<div class="controls">
+	  <%= f.text_field :permanent_city %>
+	</div>
+      </div>
 
-  <div><%= f.label :permanent_city %>
-  <%= f.text_field :permanent_city %></div>
+      <div class="control-group">
+	<%= f.label :permanent_state, :class => "control-label" %>
+	<div class="controls">
+	  <%= f.text_field :permanent_state %>
+	</div>
+      </div>
 
-  <div><%= f.label :permanent_state %>
-  <%= f.text_field :permanent_state %></div>
+      <div class="control-group">
+	<%= f.label :permanent_zip, :class => "control-label" %>
+	<div class="controls">
+	  <%= f.text_field :permanent_zip %>
+	</div>
+      </div>
 
-  <div><%= f.label :permanent_zip %>
-  <%= f.text_field :permanent_zip %></div>
+      <div class="control-group">
+	<%= f.label :permanent_apt, :class => "control-label" %>
+	<div class="controls">
+	  <%= f.text_field :permanent_apt %>
+	</div>
+      </div>
+      
+    </div>
 
-  <div><%= f.label :permanent_apt %>
-  <%= f.text_field :permanent_apt %></div>
+    <div class="control-group">
+      <%= f.label :tour_trained, :class => "control-label" %>
+      <div class="controls">
+	<%= f.check_box :tour_trained %>
+      </div>
+    </div>
 
-  </div>
+    <div class="control-group">
+      <%= f.label :current_password, :class => "control-label" %>
+      <div class="controls">
+	<%= f.password_field :current_password %>
+	<p class="help-block">(we need your current password to confirm your changes)</p>
+      </div>
+    </div>
 
-  <div><%= f.label :tour_trained %>
-  <%= f.check_box :tour_trained %></div>
-  
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
-  <%= f.password_field :current_password %></div>
-
-  <div><%= f.submit "Update" %></div>
+    <div class="form-actions">
+      <%= f.submit "Update", :class => "btn btn-primary" %>
+      <%= link_to "Back", :back, :class => "btn" %>
+    </div>
+  </fieldset>
 <% end %>
 
 <!-- <h3>Cancel my account</h3> -->
 
 <!-- <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p> -->
 
-<%= link_to "Back", :back %>
+
