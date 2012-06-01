@@ -4,6 +4,7 @@
    - Avatar
 
 ** Forms
+   - SimpleFormify forms
    - Add bootstrap control-group to divs
    - Surround form with <fieldset>
    - Add banner with @ appened button
