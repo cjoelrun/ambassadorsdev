@@ -1,19 +1,49 @@
 <h1><%= @user.name %></h1>
+<dl>
+  <dt>Email<dt> 
+  <dd>
+    <%= @user.email if @user.email %>
+  </dd>
 
-<p>Email: <%= @user.email if @user.email %></p>
-<p>Phone: <%= @user.phone if @user.phone %></p>
-<p>Birthday: <%= @user.birthday if @user.birthday %></p>
+  <dt>Banner</dt>
+  <dd>
+    @<%= @user.banner if @user.banner %>
+  </dd>
 
-<address>
-<p>Local Address:</p>
-<%= local_address(@user.id) %>
-</address>
+  <dt>UTSA ID</dt>
+  <dd>
+    <%= @user.utsa_id if @user.utsa_id %>
+  </dd>
 
-<% if @user.same_address == false %>
-  <address>
-    <p>Permanent Address:</p>
-    <%= permanent_address(@user.id) %>
-  </address>
-<% end %>
+  <dt>Phone</dt> 
+  <dd>
+    <%= @user.phone if @user.phone %>
+  </dd>
 
-<p>Tour Trained: <%= @user.tour_trained if @user.tour_trained %></p>
+  <dt>Birthday</dt>
+  <dd><%= @user.birthday if @user.birthday %></dd>
+  
+  
+  <dt>Local Address</dt>
+  <dd>
+    <% if (!local_address(@user.id).blank?) %>
+    <address>
+      <%= local_address(@user.id) %>
+    </address>
+    <% end %>
+  </dd>
+  
+  <% if @user.same_address == false %>
+  <dt>Permanent Address:</dt>
+  <dd>
+    <address>
+      <%= permanent_address(@user.id) %>
+    </address>
+  </dd>
+  <% end %>
+
+  <dt>Tour Trained</dt>
+  <dd>
+    <%= @user.tour_trained if @user.tour_trained %>
+  </dd>
+</dl>

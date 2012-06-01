@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :encryptable, :encryptor => :md5
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at, :phone, :birthday, :local_street, :local_city, :local_state, :local_zip, :local_apt, :permanent_street, :permanent_city, :permanent_state, :permanent_zip, :permanent_apt, :same_address, :tour_trained
+  attr_accessible :first_name, :last_name, :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at, :phone, :birthday, :local_street, :local_city, :local_state, :local_zip, :local_apt, :permanent_street, :permanent_city, :permanent_state, :permanent_zip, :permanent_apt, :same_address, :tour_trained, :banner, :utsa_id
   # attr_accessible :title, :body
   
   def valid_password?(password)

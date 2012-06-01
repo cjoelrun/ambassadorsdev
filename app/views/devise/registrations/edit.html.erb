@@ -1,35 +1,41 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "form-horizontal" }) do |f| %>
-  <fieldset>
-    <%= devise_error_messages! %>
+<fieldset>
+  <%= devise_error_messages! %>
 
-    <div class="control-group">
-      <%= f.label :first_name, :class => "control-label" %>
-      <div class="controls">
-	<%= f.text_field :first_name %>
-      </div>
+  <div class="control-group">
+    <%= f.label :first_name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :first_name %>
     </div>
+  </div>
 
-    <div class="control-group">
-      <%= f.label :last_name, :class => "control-label" %>
-      <div class="controls">
-	<%= f.text_field :last_name %>
-      </div>
+  <div class="control-group">
+    <%= f.label :last_name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :last_name %>
     </div>
+  </div>
 
-    <div class="control-group">
-      <%= f.label :email, :class => "control-label" %>
-      <div class="controls">
-	<%= f.email_field :email %>
-      </div>
+  <div class="control-group">
+    <%= f.label :email, :class => "control-label" %>
+    <div class="controls">
+      <%= f.email_field :email %>
     </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <div id="change-password-button" class="btn" href="#">Change Password</div>
+    </div>
+  </div>
+  <div id="change-password" class="hide">
 
     <div class="control-group">
       <%= f.label :password, :class => "control-label" %> 
       <div class="controls">
 	<%= f.password_field :password, :autocomplete => "off" %>
-	<p class="help-block">Leave blank if you don't want to change it</p>
       </div>
     </div>
 
@@ -40,121 +46,145 @@
       </div>
     </div>
 
-    <div class="control-group">
-      <%= f.label :phone, :class => "control-label" %>
-      <div class="controls">
-	<%= f.text_field :phone %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :banner, :class => "control-label" %>
+    <div class="controls">
+      <div class="input-prepend">
+        <span class="add-on">@</span>
+	<%= f.text_field :banner %>
       </div>
     </div>
+  </div>
 
-    <div class="control-group">
-      <%= f.label :birthday, :class => "control-label" %>
-      <div class="controls">
-	<%= f.date_select(:birthday, :start_year => 1970) %>
+  <div class="control-group">
+    <%= f.label :utsa_id, :class => "control-label" %>
+    <div class="controls">
+      <div class="input-append">
+	<%= f.text_field :utsa_id %>
+	<span class="add-on">@my.utsa.edu</span>
       </div>
     </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :phone, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :phone %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :birthday, :class => "control-label" %>
+    <div class="controls">
+      <%= f.date_select(:birthday, :start_year => 1970) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :local_street, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :local_street %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :local_city, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :local_city %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :local_state, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :local_state %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :local_zip, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :local_zip %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :local_apt, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :local_apt %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :same_address, :class => "control-label" %>
+    <div class="controls">
+      <%= f.check_box :same_address, {checked: true} %>
+      <p class="help-inline">Check if your local address is also your permanent address</p>
+    </div>
+  </div>
+
+  <div id="permanent_address" class="hide">
 
     <div class="control-group">
-      <%= f.label :local_street, :class => "control-label" %>
+      <%= f.label :permanent_street, :class => "control-label" %>
       <div class="controls">
-	<%= f.text_field :local_street %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :local_city, :class => "control-label" %>
-      <div class="controls">
-	<%= f.text_field :local_city %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :local_state, :class => "control-label" %>
-      <div class="controls">
-	<%= f.text_field :local_state %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :local_zip, :class => "control-label" %>
-      <div class="controls">
-	<%= f.text_field :local_zip %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :local_apt, :class => "control-label" %>
-      <div class="controls">
-	<%= f.text_field :local_apt %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :same_address, :class => "control-label" %>
-      <div class="controls">
-	<%= f.check_box :same_address, {checked: true} %>
-      </div>
-    </div>
-
-    <div id="permanent_address" class="hide">
-
-      <div class="control-group">
-	<%= f.label :permanent_street, :class => "control-label" %>
-	<div class="controls">
-	  <%= f.text_field :permanent_street %>
-	</div>
-      </div>
-
-      <div class="control-group">
-	<%= f.label :permanent_city, :class => "control-label" %>
-	<div class="controls">
-	  <%= f.text_field :permanent_city %>
-	</div>
-      </div>
-
-      <div class="control-group">
-	<%= f.label :permanent_state, :class => "control-label" %>
-	<div class="controls">
-	  <%= f.text_field :permanent_state %>
-	</div>
-      </div>
-
-      <div class="control-group">
-	<%= f.label :permanent_zip, :class => "control-label" %>
-	<div class="controls">
-	  <%= f.text_field :permanent_zip %>
-	</div>
-      </div>
-
-      <div class="control-group">
-	<%= f.label :permanent_apt, :class => "control-label" %>
-	<div class="controls">
-	  <%= f.text_field :permanent_apt %>
-	</div>
-      </div>
-      
-    </div>
-
-    <div class="control-group">
-      <%= f.label :tour_trained, :class => "control-label" %>
-      <div class="controls">
-	<%= f.check_box :tour_trained %>
+	<%= f.text_field :permanent_street %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= f.label :current_password, :class => "control-label" %>
+      <%= f.label :permanent_city, :class => "control-label" %>
       <div class="controls">
-	<%= f.password_field :current_password %>
-	<p class="help-block">(we need your current password to confirm your changes)</p>
+	<%= f.text_field :permanent_city %>
       </div>
     </div>
 
-    <div class="form-actions">
-      <%= f.submit "Update", :class => "btn btn-primary" %>
-      <%= link_to "Back", :back, :class => "btn" %>
+    <div class="control-group">
+      <%= f.label :permanent_state, :class => "control-label" %>
+      <div class="controls">
+	<%= f.text_field :permanent_state %>
+      </div>
     </div>
-  </fieldset>
+
+    <div class="control-group">
+      <%= f.label :permanent_zip, :class => "control-label" %>
+      <div class="controls">
+	<%= f.text_field :permanent_zip %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :permanent_apt, :class => "control-label" %>
+      <div class="controls">
+	<%= f.text_field :permanent_apt %>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="control-group">
+    <%= f.label :tour_trained, :class => "control-label" %>
+    <div class="controls">
+      <%= f.check_box :tour_trained %>
+      <p class="help-inline">Check only if you've been offically tour trained</p>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :current_password, :class => "control-label" %>
+    <div class="controls">
+      <%= f.password_field :current_password %>
+      <p class="help-block">We need your current password to confirm your changes</p>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Update", :class => "btn btn-primary" %>
+    <%= link_to "Back", :back, :class => "btn btn-danger" %>
+  </div>
+</fieldset>
 <% end %>
 
 <!-- <h3>Cancel my account</h3> -->

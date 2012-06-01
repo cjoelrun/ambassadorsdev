@@ -9,6 +9,7 @@ gem "devise_invitable", ">= 1.0.1"
 gem 'devise-encryptable'
 gem "cancan", ">= 1.6.7"
 gem "rolify", ">= 3.1.0"
+gem 'simple_form'
 
 group :development do
   gem 'sqlite3'

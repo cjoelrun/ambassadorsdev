@@ -1,9 +1,20 @@
 $(document).ready(function(){
-    $("#user_same_address").change(function(){
+    $("#user_same_address").change(function(){ // User Edit Form - Hide/Show Permanent Address
         if ($(this).is(':checked')) {
             $("#permanent_address").slideUp("fast");    //Slide Up Effect
         } else {
             $("#permanent_address").slideDown("fast"); //Slide Down Effect
         }
+    });
+
+    $("#change-password-button").click(function(){ // User Edit Form - Hide/Show Password Edit
+	if($("#change-password").is(':hidden')) {
+            $("#change-password").slideDown("fast");
+	    $("#change-password-button").html("Cancel Change Password");
+	} 
+	else {
+	    $("#change-password").slideUp("fast");
+	    $("#change-password-button").html("Change Password");
+	}
     });
 });

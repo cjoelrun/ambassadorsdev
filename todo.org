@@ -1,4 +1,8 @@
 * Users
+
+** Fields
+   - Avatar
+
 ** Forms
    - Add bootstrap control-group to divs
    - Surround form with <fieldset>
