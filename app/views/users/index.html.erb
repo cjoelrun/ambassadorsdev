@@ -1,9 +1,33 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
-<ul class="users">
+<h2>Users</h2>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Tour Trained</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @users.each do |user| %>
-    <li>
-      <%= link_to user.name, user %> signed up <%= user.created_at.to_date %>
-    </li>
+    <tr>
+      <td>
+	<%= link_to raw('<i class="icon-user icon-white"></i>'), user, :class => 'btn btn-primary' %>
+      </td>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.phone %></td>
+      <td><%= user.email %></td>
+      <td>
+	<% if user.tour_trained %>
+	  <i class="icon-ok"></i>
+	<% else %>
+	  <i class="icon-remove"></i>
+	<% end %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
