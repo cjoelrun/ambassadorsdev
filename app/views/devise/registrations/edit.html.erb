@@ -1,69 +1,68 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "form-horizontal" }) do |f| %>
+  <%= f.error_notification %>
 
-<%= devise_error_messages! %>
+  <div class="form-inputs">
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :email %>
 
-<%= f.input :first_name %>
-<%= f.input :last_name %>
-<%= f.input :email %>
+    <div class="control-group">
+      <div class="controls">
+	<div id="change-password-button" class="btn" href="#">Change Password</div>
+      </div>
+    </div>
 
-<div class="control-group">
-  <div class="controls">
-    <div id="change-password-button" class="btn" href="#">Change Password</div>
+    <div id="change-password" class="hide">
+      <%= f.input :password %> 
+      <%= f.input :password_confirmation %>
+    </div>
+
+    <%= f.input :banner, :wrapper => :prepend do %> 
+      <span class="add-on">@</span><%= f.input_field :banner %>
+    <% end %> 
+
+    <%= f.input :utsa_id, :wrapper => :append do %> 
+      <%= f.input_field :utsa_id %><span class="add-on">@my.utsa.edu</span>
+    <% end %> 
+
+    <%= f.input :phone %>
+    <%= f.input :birthday %>
+
+    <%= f.input :local_street %>
+    <%= f.input :local_city %>
+    <%= f.input :local_state %>
+    <%= f.input :local_zip %>
+    <%= f.input :local_apt %>
+
+    <%= f.input :same_address do %>
+      <%= f.input_field :same_address %>
+      <p class="help-inline">Check if your local address is the same as your permanent address</p>
+    <% end %>
+
+    <div id="permanent_address" class="hide">
+      <%= f.input :permanent_street %>
+      <%= f.input :permanent_city %>
+      <%= f.input :permanent_state %>
+      <%= f.input :permanent_zip %>
+      <%= f.input :permanent_apt %>
+    </div>
+
+    <%= f.input :tour_trained do %>
+      <%= f.input_field :tour_trained %>
+      <p class="help-inline">Check only if you've been offically tour trained</p>
+    <% end %>
+
+    <%= f.input :current_password, :hint => "We need your current password to confirm your changes" %>
   </div>
-</div>
-
-<div id="change-password" class="hide">
-  <%= f.input :password %> 
-  <%= f.input :password_confirmation %>
-</div>
-
-<%= f.input :banner, :wrapper => :prepend do %> 
-<span class="add-on">@</span><%= f.input_field :banner %>
-<% end %> 
-
-<%= f.input :utsa_id, :wrapper => :append do %> 
-<%= f.input_field :utsa_id %><span class="add-on">@my.utsa.edu</span>
-<% end %> 
-
-<%= f.input :phone %>
-<%= f.input :birthday %>
-
-<%= f.input :local_street %>
-<%= f.input :local_city %>
-<%= f.input :local_state %>
-<%= f.input :local_zip %>
-<%= f.input :local_apt %>
-
-<%= f.input :same_address do %>
-<%= f.input_field :same_address %>
-<p class="help-inline">Check if your local address is the same as your permanent address</p>
-<% end %>
-
-<div id="permanent_address" class="hide">
-  <%= f.input :permanent_street %>
-  <%= f.input :permanent_city %>
-  <%= f.input :permanent_state %>
-  <%= f.input :permanent_zip %>
-  <%= f.input :permanent_apt %>
-</div>
-
-<%= f.input :tour_trained do %>
-<%= f.input_field :tour_trained %>
-<p class="help-inline">Check only if you've been offically tour trained</p>
-<% end %>
-
-<%= f.input :current_password, :hint => "We need your current password to confirm your changes" %>
-
-<div class="form-actions">
-  <%= f.button :submit, :class => 'btn-primary' %>
-  <%= submit_tag 'Reset', :type => :reset, :class => "btn btn-danger" %>
-</div>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= submit_tag 'Reset', :type => :reset, :class => "btn btn-danger" %>
+  </div>
 <% end %>
 
 <!-- <h3>Cancel my account</h3> -->
-
 <!-- <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p> -->
 
 

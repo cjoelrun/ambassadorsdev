@@ -5,6 +5,43 @@ $iconWhiteSpritePath: asset-url('glyphicons-halflings-white.png', image);
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
-.hero-unit h1, .hero-unit p {
+.hero-unit {
   text-align: center;
 }
+
+#social {
+  margin-top: 45px;
+}
+
+.about .glyph {
+  float: left;
+  opacity: 0.6;
+  max-width: 100%
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about h3 {
+  margin: 0 0 5px 35px;
+}
+
+/* footer */
+.centered-pills { text-align:center; }
+.centered-pills ul.nav-pills { display:inline-block; }
+.centered-pills li { display:inline; }
+.centered-pills a { float:left; }
+* html .centered-pills ul.nav-pills { display:inline; } /* IE6 */
+*+html .centered-pills ul.nav-pills { display:inline; } /* IE7 */
+.footer { 
+    margin-top: 45px;
+    padding: 35px 0 36px;
+    border-top: 1px solid #E5E5E5;
+    p {
+	text-align: center;
+    }
+}
+.nav { margin-bottom: 0; }

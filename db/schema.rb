@@ -11,7 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120601041812) do
+ActiveRecord::Schema.define(:version => 20120604200100) do
+
+  create_table "credit_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "event_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.date     "date"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.integer  "members_needed"
+    t.integer  "hours"
+    t.string   "location"
+    t.text     "instructions"
+    t.boolean  "ait"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -37,7 +63,6 @@ ActiveRecord::Schema.define(:version => 20120601041812) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                           :null => false
     t.datetime "updated_at",                                           :null => false
-    t.string   "name"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"

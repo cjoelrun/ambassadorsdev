@@ -1,0 +1,25 @@
+<%= simple_form_for(@event, :html => { :class => "form-horizontal" }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :date %>
+    <%= f.input :start_time %>
+    <%= f.input :end_time %>
+    <%= f.input :members_needed %>
+
+    <%= f.input :event_type %>
+    <%= f.input :credit_type %>    
+    <%= f.input :hours %>
+    <%= f.input :location %>
+    <%= f.input :instructions, :input_html => { :cols => "4" }%>
+    <%= f.input :ait do %>
+      <%= f.input_field :ait %>
+      <p class="help-inline">Check if AITs are allowed to attend</p>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "btn-primary" %>
+  </div>
+<% end %>

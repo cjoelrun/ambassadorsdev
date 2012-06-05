@@ -1,0 +1,9 @@
+class CreateCreditTypes < ActiveRecord::Migration
+  def change
+    create_table :credit_types do |t|
+      t.string :name
+
+      t.timestamps
+    end
+  end
+end
