@@ -50,4 +50,12 @@ module UsersHelper
     html.html_safe
   end
 
+  def render_tour_trained(tour_trained)
+    if tour_trained
+      raw '<i class="icon-ok"></i>'
+    else
+      raw '<i class="icon-remove"></i>'
+    end
+  end
+  
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120604200100) do
+ActiveRecord::Schema.define(:version => 20120606161302) do
 
   create_table "credit_types", :force => true do |t|
     t.string   "name"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(:version => 20120604200100) do
     t.boolean  "ait"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "event_type_id"
+    t.integer  "credit_type_id"
+  end
+
+  create_table "registrations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "roles", :force => true do |t|

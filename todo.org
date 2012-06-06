@@ -1,10 +1,9 @@
 * Users
+  - Add association to events
 
 ** Fields
    - Avatar
 
-** Forms
-   - SimpleFormify forms
-   - Add bootstrap control-group to divs
-   - Surround form with <fieldset>
-   - Add banner with @ appened button
+* Events
+  - Add association to users
+  - Create views(month_cal, day, by_category,

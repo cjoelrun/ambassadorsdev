@@ -1,49 +1,45 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @event.title %></h1>
 
-<p>
-  <b>Title:</b>
-  <%= @event.title %>
-</p>
+<dl>
+  <dt>Date:</dt>
+  <dd>
+    <%= time_tag @event.date %>
+  </dd>
 
-<p>
-  <b>Date:</b>
-  <%= @event.date %>
-</p>
+  <dt>Start time:</dt>
+  <dd>
+    <%= time_tag @event.start_time, :format=>'%l:%M %p' %>
+  </dd>
 
-<p>
-  <b>Start time:</b>
-  <%= @event.start_time %>
-</p>
+  <dt>End time:</dt>
+  <dd>
+    <%= time_tag @event.end_time, :format=>'%l:%M %p' %>
+  </dd>
 
-<p>
-  <b>End time:</b>
-  <%= @event.end_time %>
-</p>
+  <dt>Members needed:</dt>
+  <dd>
+    <%= @event.members_needed %>
+  </dd>
 
-<p>
-  <b>Members needed:</b>
-  <%= @event.members_needed %>
-</p>
+  <dt>Hours:</dt>
+  <dd>
+    <%= @event.hours %>
+  </dd>
 
-<p>
-  <b>Hours:</b>
-  <%= @event.hours %>
-</p>
+  <dt>Location:</dt>
+  <dd>
+    <%= @event.location %>
+  </dd>
 
-<p>
-  <b>Location:</b>
-  <%= @event.location %>
-</p>
+  <dt>Instructions:</dt>
+  <dd>
+    <%= @event.instructions %>
+  </dd>
 
-<p>
-  <b>Instructions:</b>
-  <%= @event.instructions %>
-</p>
-
-<p>
-  <b>Ait:</b>
-  <%= @event.ait %>
-</p>
+  <dt>Ait:</dt>
+  <dd>
+    <%= render_ait(@event.ait) %>
+  </dd>
 
 
 <%= link_to 'Edit', edit_event_path(@event) %> |

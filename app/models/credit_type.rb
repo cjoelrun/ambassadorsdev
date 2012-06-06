@@ -1,3 +1,4 @@
 class CreditType < ActiveRecord::Base
-  attr_accessible :name
+	has_many :events
+	attr_accessible :name
 end

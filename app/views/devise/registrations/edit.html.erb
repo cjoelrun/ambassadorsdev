@@ -28,7 +28,7 @@
     <% end %> 
 
     <%= f.input :phone %>
-    <%= f.input :birthday %>
+    <%= f.input :birthday, :start_year => Date.today.year - 40, :end_year => Date.today.year - 12, :order => [:month, :day, :year] %>
 
     <%= f.input :local_street %>
     <%= f.input :local_city %>
@@ -41,7 +41,7 @@
       <p class="help-inline">Check if your local address is the same as your permanent address</p>
     <% end %>
 
-    <div id="permanent_address" class="hide">
+    <div id="permanent_address" >
       <%= f.input :permanent_street %>
       <%= f.input :permanent_city %>
       <%= f.input :permanent_state %>

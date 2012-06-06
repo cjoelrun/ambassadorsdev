@@ -44,10 +44,6 @@
 
   <dt>Tour Trained</dt>
   <dd>
-    <% if @user.tour_trained %>
-      <i class="icon-ok"></i>
-    <% else %>
-      <i class="icon-remove"></i>
-    <% end %>
+    <%= render_tour_trained(@user.tour_trained) %>
   </dd>
 </dl>
