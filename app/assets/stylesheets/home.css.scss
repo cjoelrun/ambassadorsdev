@@ -3,7 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @media (max-width: 480px) {
+	.hero-unit {
+		padding: 30px;
+	}
 	.hero-unit h1 {
 		font-size: 30px;
-		}
+	}
 }
