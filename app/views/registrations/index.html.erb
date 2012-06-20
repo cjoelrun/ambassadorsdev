@@ -1,0 +1,33 @@
+<h1>My Events</h1>
+
+<table class="table table-strped table-bordered">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Hours</th>
+      <th>Location</th>
+      <th>Status</th>
+  </thead>
+  <tbody>
+    <% @registrations.each do |registration| %>
+    <tr>
+      <td><%= registration.event.title %></td>
+      <td><%= time_tag(registration.event.date) %></td>
+      <td><%= time_tag registration.event.start_time, :format=>'%l:%M %p' %></td>
+      <td><%= time_tag registration.event.end_time, :format=>'%l:%M %p' %></td>
+      <td><%= registration.event.hours %></td>
+      <td><%= registration.event.location %></td>
+      <td><%= registration.registration_status.name %></td>
+
+      <td class="hidden">
+        <%= link_to "Show", registration.event, :class => 'btn btn-primary' %>
+      </td>
+    </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />

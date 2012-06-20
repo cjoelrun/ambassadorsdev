@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   before_filter :authenticate_user!
-  
+
   def index
     @events = Event.all
 
@@ -16,6 +16,8 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
+    @events = current_user.events
+    @registration = Registration.find_by_user_id_and_event_id(current_user.id, @event.id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -82,4 +84,24 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def add
+    @event = Event.find(params[:id])
+    user = User.find(params[:user_id])
+    @registrion = user.registrations.build :event_id => @event.id, :user_id => user.id, :registration_status_id => RegistrationStatus.first.id
+    @registrion.save
+    if (!user.events.exists?(@event))
+      user.events << @event
+    end
+    respond_to do |format|
+      if user.events.exists?(@event)
+        format.html { render action: "show", controller: "events", notice: 'Registrion was successfully created.' }
+        format.json { render json: @event, status: :created, location: @event }
+      else
+        format.html { render action: "show", controller: "events", notice: 'Registration failed' }
+        format.html { render json: @registration.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 end
