@@ -1,9 +1,21 @@
 * Users
-  - Add association to events
 
 ** Fields
    - Avatar
 
 * Events
-  - Add association to users
-  - Create views(month_cal, day, by_category,
+  - Create views(month_cal, day, by_category,)
+
+* Applications
+  - Scaffold ait and ambassador applications
+  - Management
+
+
+* Reports
+  - YTD Hours
+  - Monthly Report
+  - Tour Count
+
+* Home
+  - Letter to Amb/AIT
+  - about amb/ait

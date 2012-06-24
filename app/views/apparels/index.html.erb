@@ -1,0 +1,23 @@
+<h1>Listing apparels</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @apparels.each do |apparel| %>
+  <tr>
+    <td><%= apparel.name %></td>
+    <td><%= link_to 'Show', apparel %></td>
+    <td><%= link_to 'Edit', edit_apparel_path(apparel) %></td>
+    <td><%= link_to 'Destroy', apparel, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Apparel', new_apparel_path %>
