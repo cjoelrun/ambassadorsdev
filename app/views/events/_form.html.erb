@@ -11,12 +11,12 @@
     <%= f.association :credit_type %>
     <%= f.input :hours %>
     <%= f.input :location %>
+    <%= f.association :apparel %>
     <%= f.input :instructions, :input_html => { :rows => "4" }%>
     <%= f.input :ait do %>
       <%= f.input_field :ait %>
       <p class="help-inline">Check if AITs are allowed to attend</p>
     <% end %>
-    <%= f.association :apparel %>
   </div>
 
   <div class="form-actions">

@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   before_filter :authenticate_user!
+  load_and_authorize_resource
 
   def index
     @events = Event.all
@@ -89,16 +90,12 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     user = User.find(params[:user_id])
     @registrion = user.registrations.build :event_id => @event.id, :user_id => user.id, :registration_status_id => RegistrationStatus.first.id
-    @registrion.save
-    if (!user.events.exists?(@event))
-      user.events << @event
-    end
     respond_to do |format|
-      if user.events.exists?(@event)
-        format.html { render action: "show", controller: "events", notice: 'Registrion was successfully created.' }
-        format.json { render json: @event, status: :created, location: @event }
+      if @registrion.save
+        format.html { redirect_to @event, notice: 'Registrion was successfully created.' }
+        format.json { render json: @registration, status: :created, location: @registration.event }
       else
-        format.html { render action: "show", controller: "events", notice: 'Registration failed' }
+        format.html { redirect_to @event, alert: 'Registration failed' }
         format.html { render json: @registration.errors, status: :unprocessable_entity }
       end
     end

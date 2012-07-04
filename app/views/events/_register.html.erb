@@ -1,8 +1,5 @@
-<% if !@registration %>
-  <%= form_tag("/events/" + @event.id.to_s  + "/add", :method => "post") do %>
-    <%= hidden_field_tag(:user_id, current_user.id) %>
-    <%= submit_tag "Register", :class => "btn" %>
-  <% end %>
-<% else %>
-
+<%= form_tag("/events/" + @event.id.to_s  + "/add", :method => "post") do %>
+  <%= hidden_field_tag(:user_id, current_user.id) %>
+  <%= submit_tag "Register", :class => "btn" %>
 <% end %>
+

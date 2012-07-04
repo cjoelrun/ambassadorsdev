@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621183821) do
+ActiveRecord::Schema.define(:version => 20120629052144) do
 
   create_table "apparels", :force => true do |t|
     t.string   "name"
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20120621183821) do
     t.boolean  "tour_trained"
     t.string   "banner"
     t.string   "utsa_id"
+    t.string   "image"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

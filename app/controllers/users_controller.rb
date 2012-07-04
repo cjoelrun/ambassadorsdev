@@ -6,12 +6,12 @@ class UsersController < ApplicationController
   load_and_authorize_resource :only => [:show,:new,:destroy,:edit,:update]
 
   # GET /users
-  # GET /users.xml                                                
+  # GET /users.xml
   # GET /users.json                                       HTML and AJAX
   #-----------------------------------------------------------------------
   def index
-	authorize! :index, @user, :message => 'Not authorized as an administrator.'
-	@users = User.accessible_by(current_ability, :index).limit(20)
+  authorize! :index, @user, :message => 'You are not authorized to view this page.'
+  @users = User.accessible_by(current_ability, :index).limit(20)
     respond_to do |format|
       format.json { render :json => @users }
       format.xml  { render :xml => @users }
@@ -20,71 +20,71 @@ class UsersController < ApplicationController
   end
 
   # GET /users/new
-  # GET /users/new.xml                                            
+  # GET /users/new.xml
   # GET /users/new.json                                    HTML AND AJAX
   #-------------------------------------------------------------------
   def new
     respond_to do |format|
-      format.json { render :json => @user }   
+      format.json { render :json => @user }
       format.xml  { render :xml => @user }
       format.html
     end
   end
- 
+
   # GET /users/1
-  # GET /users/1.xml                                                       
+  # GET /users/1.xml
   # GET /users/1.json                                     HTML AND AJAX
   #-------------------------------------------------------------------
   def show
     respond_to do |format|
       format.json { render :json => @user }
       format.xml  { render :xml => @user }
-      format.html      
+      format.html
     end
- 
+
   rescue ActiveRecord::RecordNotFound
     respond_to_not_found(:json, :xml, :html)
   end
- 
-  # GET /users/1/edit                                                      
-  # GET /users/1/edit.xml                                                      
+
+  # GET /users/1/edit
+  # GET /users/1/edit.xml
   # GET /users/1/edit.json                                HTML AND AJAX
   #-------------------------------------------------------------------
   def edit
     respond_to do |format|
-      format.json { render :json => @user }   
+      format.json { render :json => @user }
       format.xml  { render :xml => @user }
       format.html
     end
- 
+
   rescue ActiveRecord::RecordNotFound
     respond_to_not_found(:json, :xml, :html)
   end
- 
-  # DELETE /users/1     
+
+  # DELETE /users/1
   # DELETE /users/1.xml
   # DELETE /users/1.json                                  HTML AND AJAX
   #-------------------------------------------------------------------
   def destroy
     @user.destroy!
- 
+
     respond_to do |format|
       format.json { respond_to_destroy(:ajax) }
       format.xml  { head :ok }
-      format.html { respond_to_destroy(:html) }      
+      format.html { respond_to_destroy(:html) }
     end
- 
+
   rescue ActiveRecord::RecordNotFound
     respond_to_not_found(:json, :xml, :html)
   end
- 
+
   # POST /users
-  # POST /users.xml         
+  # POST /users.xml
   # POST /users.json                                      HTML AND AJAX
   #-----------------------------------------------------------------
   def create
     @user = User.new(params[:user])
- 
+
     if @user.save
       respond_to do |format|
         format.json { render :json => @user.to_json, :status => 200 }
@@ -110,7 +110,7 @@ class UsersController < ApplicationController
     else
       @user.errors[:base] << "The password you entered is incorrect" unless @user.valid_password?(params[:user][:current_password])
     end
- 
+
     respond_to do |format|
       if @user.errors[:base].empty? and @user.update_attributes(params[:user])
         flash[:notice] = "Your account has been updated"
@@ -123,7 +123,7 @@ class UsersController < ApplicationController
         format.html { render :action => :edit, :status => :unprocessable_entity }
       end
     end
- 
+
   rescue ActiveRecord::RecordNotFound
     respond_to_not_found(:js, :xml, :html)
   end

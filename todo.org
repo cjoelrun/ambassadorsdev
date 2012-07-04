@@ -1,8 +1,5 @@
 * Users
 
-** Fields
-   - Avatar
-
 * Events
   - Create views(month_cal, day, by_category,)
 
@@ -19,3 +16,6 @@
 * Home
   - Letter to Amb/AIT
   - about amb/ait
+
+* Security
+  - Lock down controllers - CANCAN

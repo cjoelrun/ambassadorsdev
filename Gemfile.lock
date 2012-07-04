@@ -33,6 +33,9 @@ GEM
     bootstrap-sass (2.0.2)
     builder (3.0.0)
     cancan (1.6.7)
+    carrierwave (0.6.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -117,6 +120,7 @@ GEM
     rb-fsevent (0.9.1)
     rdoc (3.12)
       json (~> 1.4)
+    rmagick (2.12.0)
     rolify (3.1.0)
     rspec (2.9.0)
       rspec-core (~> 2.9.0)
@@ -164,6 +168,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (>= 2.0.1)
   cancan (>= 1.6.7)
+  carrierwave
   coffee-rails (~> 3.2.1)
   devise (>= 2.1.0.rc)
   devise-encryptable
@@ -179,6 +184,7 @@ DEPENDENCIES
   pg (= 0.12.2)
   rails (= 3.2.3)
   rb-fsevent
+  rmagick (= 2.12.0)
   rolify (>= 3.1.0)
   rspec-rails (>= 2.9.0.rc2)
   sass-rails (~> 3.2.3)

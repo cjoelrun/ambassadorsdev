@@ -13,18 +13,22 @@
     </thead>
     <tbody>
       <% @users.each do |user| %>
-      <tr>
-	<td>
-	  <%= link_to raw('<i class="icon-user icon-white"></i>'), user, :class => 'btn btn-primary' %>
-	</td>
-	<td><%= user.first_name %></td>
-	<td><%= user.last_name %></td>
-	<td><%= user.phone %></td>
-	<td><%= user.email %></td>
-	<td>
-	  <%= render_tour_trained user.tour_trained %>
-	</td>
-      </tr>
+	<tr>
+	  <td>
+	    <% if user.image.blank? %>
+	      <%= link_to raw("<i class='icon-user icon-white'></i>"), user, :class => 'btn btn-primary' %> 
+	    <% else -%>
+	      <%= link_to image_tag(user.image_url(:thumb)), user %>
+	    <% end -%>
+	  </td>
+	  <td><%= user.first_name %></td>
+	  <td><%= user.last_name %></td>
+	  <td><%= user.phone %></td>
+	  <td><%= user.email %></td>
+	  <td>
+	    <%= render_tour_trained user.tour_trained %>
+	  </td>
+	</tr>
       <% end %>
     </tbody>
   </table>

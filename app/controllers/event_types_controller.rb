@@ -1,6 +1,9 @@
 class EventTypesController < ApplicationController
   # GET /event_types
   # GET /event_types.json
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+
   def index
     @event_types = EventType.all
 

@@ -37,6 +37,14 @@
 	<%= @event.instructions %>
       </dd>
 
+      <dt>Apparel:</dt>
+      <dd>
+	<% if @event.apparel %>
+	  <%= @event.apparel.name %>
+	<% end -%>
+
+      </dd>
+
       <dt>Ait:</dt>
       <dd>
 	<%= render_ait(@event.ait) %>
@@ -56,8 +64,11 @@
   </div>
 
   <div class="span4">
-    <%= render :partial => "show_users" %>
-    <%= render :partial => "register" %>
+    <% if @registration %>
+      <%= render :partial => "show_users" %>
+    <% else %>
+      <%= render :partial => "register" %>
+    <% end %>
   </div>
 
 </div>
