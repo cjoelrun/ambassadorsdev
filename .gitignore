@@ -16,4 +16,4 @@ doc/
 .DS_Store
 bundler_stubs/
 
-public/uploads/*
+public/uploads/*db/seeds.rb
