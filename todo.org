@@ -19,3 +19,7 @@
 
 * Security
   - Lock down controllers - CANCAN
+  - Remove MD5
+
+* Migration
+  - LOL
