@@ -15,5 +15,5 @@ doc/
 .project
 .DS_Store
 bundler_stubs/
-
 public/uploads/*db/seeds.rb
+config/heroku_env.rb
