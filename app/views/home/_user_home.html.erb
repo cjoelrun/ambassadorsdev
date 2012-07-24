@@ -1,38 +1,44 @@
 <h1>Welome <%= current_user.name %></h1>
 
-<div class="row about">
+<div class="row">
   <div class="span4">
-    <%= image_tag "glyphicons_262_spade.png", :class => "glyph" %>
     <h3>Events Today</h3>
-    <p>The Ambassadors provided more than 10,000 service hours to the University community last year.  Members volunteer at campus events, community and alumni functions, university sponsored conferences, and serve as tour guides for prospecitive students, parents and other visitors to campus.</p>
+    <% if !@events_today.blank? %>
+      <%= render :partial => "events_today" %>
+    <% else %>
+      <p>No events today</p>
+    <% end %>
+
   </div>
+
   <div class="span4">
-    <%= image_tag "glyphicons_289_podium.png", :class => "glyph" %>
     <h3>My Events</h3>
-    <p>The Ambassadors are enthusiastic students with strong leadership and communication skills, and they are dedicated to representing UTSA.</p>
+    <% if !@my_events.blank? %>
+      <%= render :partial => "my_events" %>
+    <% else -%>
+      <p>No registered events</p>
+    <% end -%>
   </div>
+
   <div class="span4">
-    <%= image_tag "glyphicons_263_bank.png", :class => "glyph" %>
     <h3>Birthdays</h3>
-    <p>An Ambassador is expected to represent UTSA at all times.  They are the face of the University.</p>
+    <% if !@birthdays.blank? %>
+      <%= render :partial => "birthdays" %>
+    <% else -%>
+      <p>No birthdays this month</p>
+    <% end -%>
   </div>
 </div>
 
-<div class="row about">
+<div class="row">
   <div class="span4">
-    <%= image_tag "glyphicons_262_spade.png", :class => "glyph" %>
     <h3>My Stats</h3>
-    <p>The Ambassadors provided more than 10,000 service hours to the University community last year.  Members volunteer at campus events, community and alumni functions, university sponsored conferences, and serve as tour guides for prospecitive students, parents and other visitors to campus.</p>
   </div>
   <div class="span4">
-    <%= image_tag "glyphicons_289_podium.png", :class => "glyph" %>
     <h3>Hour Leaders</h3>
-    <p>The Ambassadors are enthusiastic students with strong leadership and communication skills, and they are dedicated to representing UTSA.</p>
   </div>
   <div class="span4">
-    <%= image_tag "glyphicons_263_bank.png", :class => "glyph" %>
     <h3>Tour Leaders</h3>
-    <p>An Ambassador is expected to represent UTSA at all times.  They are the face of the University.</p>
   </div>
 </div>
 

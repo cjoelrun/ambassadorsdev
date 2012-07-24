@@ -1,0 +1,16 @@
+<table class="table table-condensed table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @birthdays.each do |user| %>
+      <tr>
+	<td><%= link_to user.name user %></td>
+	<td><%= time_tag user.birthday, :format => '%m/%d' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
