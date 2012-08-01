@@ -120,7 +120,7 @@ GEM
     rb-fsevent (0.9.1)
     rdoc (3.12)
       json (~> 1.4)
-    rmagick (2.12.0)
+    rmagick (2.13.1)
     rolify (3.1.0)
     rspec (2.9.0)
       rspec-core (~> 2.9.0)
@@ -184,7 +184,7 @@ DEPENDENCIES
   pg (= 0.12.2)
   rails (= 3.2.3)
   rb-fsevent
-  rmagick (= 2.12.0)
+  rmagick (= 2.13.1)
   rolify (>= 3.1.0)
   rspec-rails (>= 2.9.0.rc2)
   sass-rails (~> 3.2.3)

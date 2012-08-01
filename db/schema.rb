@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(:version => 20120629052144) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone"
-    t.date     "birthday"
     t.string   "local_street"
     t.string   "local_city"
     t.string   "local_state"
@@ -115,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20120629052144) do
     t.string   "banner"
     t.string   "utsa_id"
     t.string   "image"
+    t.date     "birthday"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

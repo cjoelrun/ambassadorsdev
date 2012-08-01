@@ -1,9 +1,11 @@
 class HomeController < ApplicationController
   def index
-    @users = User.all
-    @events_today = Event.where("date = ?", Date.today)
-    @my_events = current_user.events.find(:all, :order => "date desc", :limit => 5)
-    @birthdays = User.where("strftime('%-m', birthday) = ?", Date.today.month)
+    if current_user
+      @users = User.all
+      @events_today = Event.where("date = ?", Date.today)
+      @my_events = current_user.events.find(:all, :order => "date desc", :limit => 5)
+      # @birthdays = User.where("strftime('%-m', birthday) = ?", Date.today.month)
+    end
   end
 
   def about_ambassadors

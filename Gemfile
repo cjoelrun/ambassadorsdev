@@ -10,7 +10,7 @@ gem 'devise-encryptable'
 gem "cancan", ">= 1.6.7"
 gem "rolify", ">= 3.1.0"
 gem 'simple_form'
-gem "rmagick", "2.12.0", :require => 'RMagick'
+gem "rmagick", "2.13.1", :require => 'RMagick'
 gem "carrierwave"
 
 group :development do
