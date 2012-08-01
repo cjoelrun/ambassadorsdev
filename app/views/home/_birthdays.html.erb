@@ -8,7 +8,7 @@
   <tbody>
     <% @birthdays.each do |user| %>
       <tr>
-	<td><%= link_to user.name user %></td>
+	<td><%= link_to(user.name, user) %></td>
 	<td><%= time_tag user.birthday, :format => '%m/%d' %></td>
       </tr>
     <% end %>

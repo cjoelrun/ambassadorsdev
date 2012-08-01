@@ -12,6 +12,7 @@ gem "rolify", ">= 3.1.0"
 gem 'simple_form'
 gem "rmagick", "2.13.1", :require => 'RMagick'
 gem "carrierwave"
+gem 'birthday'
 
 group :development do
   gem 'sqlite3'

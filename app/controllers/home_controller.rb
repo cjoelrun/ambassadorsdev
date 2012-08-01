@@ -4,7 +4,7 @@ class HomeController < ApplicationController
       @users = User.all
       @events_today = Event.where("date = ?", Date.today)
       @my_events = current_user.events.find(:all, :order => "date desc", :limit => 5)
-      # @birthdays = User.where("strftime('%-m', birthday) = ?", Date.today.month)
+      @birthdays = User.find_birthdays_for(Date.today.beginning_of_month, Date.today.end_of_month)
     end
   end
 
