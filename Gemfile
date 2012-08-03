@@ -13,6 +13,8 @@ gem 'simple_form'
 gem "rmagick", "2.13.1", :require => 'RMagick'
 gem "carrierwave"
 gem 'birthday'
+gem "ransack"
+gem 'bootstrap-datepicker-rails'
 
 group :development do
   gem 'sqlite3'

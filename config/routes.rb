@@ -4,7 +4,10 @@ Ambassadors::Application.routes.draw do
   resources :registration_statuses
   resources :credit_types
   resources :event_types
-  resources :events
+  resources :events do
+    match 'search' => 'events#search',
+          on: :collection, via: [:get, :post], as: :search
+  end
   resources :apparels
 
   devise_for :users
@@ -18,7 +21,7 @@ Ambassadors::Application.routes.draw do
   root :to => "home#index"
 
   match "events/:id/add" => "events#add"
-  
+
   match "about_ambassadors" => "home#about_ambassadors"
   match "about_ait" => "home#about_ait"
   match "ambassadors_letter" => "home#ambassadors_letter"

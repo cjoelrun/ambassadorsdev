@@ -1,16 +1,28 @@
 class EventsController < ApplicationController
+  respond_to :html, :json
+
   # GET /events
   # GET /events.json
   before_filter :authenticate_user!
   load_and_authorize_resource
 
-  def index
-    @events = Event.all
+  # def index
+  #   @events = Event.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @events }
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.json { render json: @events }
+  #   end
+  # end
+
+  def index
+    @search = Event.search(params[:q])
+    if !params[:q]
+      @events = Event.where('date >= ? or (date = ? AND start_time >= ?)', Date.today, Date.today, Time.now).order("date ASC, start_time DESC")
+    else
+      @events = @search.result(distinct: true).order("date ASC, start_time DESC")
     end
+    respond_with @events
   end
 
   # GET /events/1
