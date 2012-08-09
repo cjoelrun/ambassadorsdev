@@ -1,12 +1,13 @@
 * Users
 
 * Events
-  - Create views(month_cal, day, by_category,)
+  - Add CreditType etc. to View
+  - Restrict signup to future events, aits
+  - JS: check gteq is lteq the lteq
 
 * Applications
   - Scaffold ait and ambassador applications
   - Management
-
 
 * Reports
   - YTD Hours

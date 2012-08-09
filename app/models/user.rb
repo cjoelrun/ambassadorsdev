@@ -35,4 +35,15 @@ class User < ActiveRecord::Base
     end
     [first_name,last_name].join(' ')
   end
+
+  def committee_hours
+    committee_id = CreditType.where('name = ?', 'Committee').first.id
+    events.sum(:hours, :conditions => ['credit_type_id = ?', committee_id])
+  end
+
+  def event_hours
+    event_id = CreditType.where('name = ?', 'Event').first.id
+    events.sum(:hours, :conditions => ['credit_type_id = ?', event_id])
+  end
+
 end
