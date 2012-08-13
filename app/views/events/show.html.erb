@@ -49,18 +49,8 @@
       <dd>
 	<%= render_ait(@event.ait) %>
       </dd>
-
-      <dt>Status:</dt>
-      <dd>
-	<% if @registration %>
-	  <%= @registration.registration_status.name %>
-	<% else -%>
-	  Not Registered
-	<% end %>
-      </dd>
-
-
-      <%= render :partial => "buttons" %>
+    </dl>
+    <%= render :partial => "buttons" %>
   </div>
 
   <div class="span4">
@@ -69,6 +59,17 @@
     <% else %>
       <%= render :partial => "register" %>
     <% end %>
+    
+    <dl>
+      <dt>Status:</dt>
+      <dd>
+	<% if @registration %>
+	  <%= @registration.registration_status.name %>
+	<% else -%>
+	  Not Registered
+	<% end %>
+      </dd>
+    </dl>
   </div>
 
 </div>
