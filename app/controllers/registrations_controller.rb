@@ -61,10 +61,10 @@ class RegistrationsController < ApplicationController
 
     respond_to do |format|
       if @registration.update_attributes(params[:registration])
-        format.html { redirect_to @registration, notice: 'Registration was successfully updated.' }
+        format.html { redirect_to @registration.event, notice: 'Registration was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to @registration.event, notice: 'Registration failed.' }
         format.json { render json: @registration.errors, status: :unprocessable_entity }
       end
     end

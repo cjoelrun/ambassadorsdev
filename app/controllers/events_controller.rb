@@ -31,6 +31,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @events = current_user.events
     @registration = Registration.find_by_user_id_and_event_id(current_user.id, @event.id)
+    @user = current_user
 
     respond_to do |format|
       format.html # show.html.erb

@@ -63,11 +63,7 @@
     <dl>
       <dt>Status:</dt>
       <dd>
-	<% if @registration %>
-	  <%= @registration.registration_status.name %>
-	<% else -%>
-	  Not Registered
-	<% end %>
+	<%= render :partial => "registration_status_form" %>
       </dd>
     </dl>
   </div>

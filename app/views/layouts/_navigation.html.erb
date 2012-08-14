@@ -7,7 +7,7 @@
 	  <%= link_to('Events', events_path) %>
 	</li>
 	<li>
-	  <%= link_to('My Events', user_registrations_path(current_user)) %>
+	  <%= link_to('My Events', user_event_registrations_path(current_user)) %>
 	</li>
 	<% if current_user.has_role? :admin %>
 	  <li>

@@ -12,7 +12,7 @@ Ambassadors::Application.routes.draw do
 
   devise_for :users
   resources :users, :except => [:destroy, :create, :new] do
-    resources :registrations
+    resources :registrations, :as => 'event_registrations'
   end
 
   authenticated :user do
