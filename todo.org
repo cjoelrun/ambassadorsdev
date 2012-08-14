@@ -1,7 +1,6 @@
 * Users
 
 * Events
-  - Add CreditType etc. to View
   - Restrict signup to future events, aits
   - JS: check gteq is lteq the lteq
 

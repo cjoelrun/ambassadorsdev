@@ -7,9 +7,11 @@ class Event < ActiveRecord::Base
   belongs_to :apparel
   validates_presence_of :date, :end_time, :hours, :members_needed, :start_time, :title, :event_type, :credit_type
 
-  def past?
-    datetime = DateTime.new(date.year, date.month, date.day, end_time.hour, end_time.min, end_time.sec)
-    DateTime.now > datetime
+  def datetime_start
+    datetime = DateTime.new(date.year, date.month, date.day, start_time.hour, start_time.min, start_time.sec, DateTime.now.offset)
   end
 
+  def datetime_end
+    datetime = DateTime.new(date.year, date.month, date.day, end_time.hour, end_time.min, end_time.sec, DateTime.now.offset)
+  end
 end

@@ -1,6 +1,6 @@
 <% if @registration %>
   <%= form_for([@user,@registration], :url => "/users/" + @user.id.to_s + "/registrations/" + @registration.id.to_s, :method => 'put') do |f| %>
-    <% if @event.past? %>
+    <% if @event.datetime_end.past? %>
       <%= f.select :registration_status_id, RegistrationStatus.all.collect {|c| [ c.name, c.id ] }, {:disabled => '1'}, :class => 'input-medium' %>
     <% else %>
       <%= f.select :registration_status_id, RegistrationStatus.all.collect {|c| [ c.name, c.id ] }, {:disabled => '3'}, :class => 'input-medium' %>
@@ -9,4 +9,10 @@
   <% end %>
 <% else -%>
   Not Registered
+  <% if !@event.datetime_start.past? %>
+    <%= form_tag("/events/" + @event.id.to_s  + "/add", :method => "post") do %>
+      <%= hidden_field_tag(:user_id, current_user.id) %>
+      <%= submit_tag "Register", :class => "btn" %>
+    <% end %>
+  <% end %>
 <% end %>
