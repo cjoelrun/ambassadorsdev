@@ -35,6 +35,30 @@
       <dt>Birthday</dt>
       <dd><%= time_tag @user.birthday if @user.birthday %></dd>
       
+      <dt>Major</dt>
+      <dd>
+	<%= @user.major if @user.major %>
+      </dd>
+
+      <dt>Hours Enrolled</dt>
+      <dd>
+	<%= @user.hours_enrolled if @user.hours_enrolled %>
+      </dd>
+
+      <dt>Graduation Date</dt>
+      <dd>
+	<%= @user.graduation_date if @user.graduation_date %>
+      </dd>
+
+      <dt>Hometown</dt>
+      <dd>
+	<%= @user.hometown if @user.hometown %>
+      </dd>
+
+      <dt>Committee</dt>
+      <dd>
+	<%= @user.committee.name if @user.committee %>
+      </dd>
       
       <dt>Local Address</dt>
       <dd>

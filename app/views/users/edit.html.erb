@@ -18,6 +18,11 @@
 
     <%= f.input :phone %>
     <%= f.input :birthday, :start_year => Date.today.year - 90, :end_year => Date.today.year - 12, :order => [:month, :day, :year] %>
+    <%= f.input :major %>
+    <%= f.input :hours_enrolled %>
+    <%= f.input :graduation_date %>
+    <%= f.input :hometown %>
+    <%= f.association :committee  %>
 
     <%= f.input :local_street %>
     <%= f.input :local_city %>

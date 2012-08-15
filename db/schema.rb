@@ -11,9 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120629052144) do
+ActiveRecord::Schema.define(:version => 20120815141248) do
 
   create_table "apparels", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "committees", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -86,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20120629052144) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                           :null => false
     t.datetime "updated_at",                                           :null => false
+    t.string   "name"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -99,6 +106,7 @@ ActiveRecord::Schema.define(:version => 20120629052144) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone"
+    t.date     "birthday"
     t.string   "local_street"
     t.string   "local_city"
     t.string   "local_state"
@@ -114,7 +122,11 @@ ActiveRecord::Schema.define(:version => 20120629052144) do
     t.string   "banner"
     t.string   "utsa_id"
     t.string   "image"
-    t.date     "birthday"
+    t.string   "major"
+    t.integer  "hours_enrolled"
+    t.string   "graduation_date"
+    t.string   "hometown"
+    t.integer  "committee_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

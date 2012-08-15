@@ -79,3 +79,25 @@ puts 'New registrationStatus created: ' << registration_status2.name
 
 registration_status3 = RegistrationStatus.create! :name => 'Canceled'
 puts 'New registrationStatus created: ' << registration_status3.name
+
+puts 'SETTING UP COMMITTEES'
+committee1 = Committee.create! :name => 'Student Recruitment'
+puts 'New committee created: ' << committee1.name
+
+committee2 = Committee.create! :name => 'Fundraising'
+puts 'New committee created: ' << committee2.name
+
+committee3 = Committee.create! :name => 'Leadership & Training'
+puts 'New committee created: ' << committee3.name
+
+committee4 = Committee.create! :name => 'Special Events'
+puts 'New committee created: ' << committee4.name
+
+committee5 = Committee.create! :name => 'Public Relations'
+puts 'New committee created: ' << committee5.name
+
+committee6 = Committee.create! :name => 'Membership Recognition'
+puts 'New committee created: ' << committee6.name
+
+committee7 = Committee.create! :name => 'Selections'
+puts 'New committee created: ' << committee7.name
