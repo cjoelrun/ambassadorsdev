@@ -1,9 +1,9 @@
 <% if @registration %>
   <%= form_for([@user,@registration], :url => "/users/" + @user.id.to_s + "/registrations/" + @registration.id.to_s, :method => 'put') do |f| %>
     <% if @event.datetime_end.past? %>
-      <%= f.select :registration_status_id, RegistrationStatus.all.collect {|c| [ c.name, c.id ] }, {:disabled => '1'}, :class => 'input-medium' %>
+      <%= f.select :registration_status_id, RegistrationStatus.all.collect {|c| [ c.name, c.id ] }, {:disabled => RegistrationStatus.where('name = ?', "Will attend").first.id.to_s}, :class => 'input-medium' %>
     <% else %>
-      <%= f.select :registration_status_id, RegistrationStatus.all.collect {|c| [ c.name, c.id ] }, {:disabled => '3'}, :class => 'input-medium' %>
+      <%= f.select :registration_status_id, RegistrationStatus.all.collect {|c| [ c.name, c.id ] }, {:disabled => RegistrationStatus.where('name = ?', "Attended").first.id.to_s}, :class => 'input-medium' %>
     <% end %>
     <%= f.submit "Update", :class => "btn-primary" %>
   <% end %>
