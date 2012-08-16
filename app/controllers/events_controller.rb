@@ -16,9 +16,9 @@ class EventsController < ApplicationController
   # end
 
   def index
-    @search = Event.search(params[:q])
+    @search = @events.search(params[:q])
     if !params[:q]
-      @events = Event.where('date >= ? or (date = ? AND start_time >= ?)', Date.today, Date.today, Time.now).order("date ASC, start_time DESC")
+      @events = @events.where('date >= ? or (date = ? AND start_time >= ?)', Date.today, Date.today, Time.now).order("date ASC, start_time DESC")
     else
       @events = @search.result(distinct: true).order("date ASC, start_time DESC")
     end
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @event = Event.find(params[:id])
+    # @event = Event.find(params[:id])
     @events = current_user.events
     @registration = Registration.find_by_user_id_and_event_id(current_user.id, @event.id)
     @user = current_user
@@ -42,7 +42,7 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.json
   def new
-    @event = Event.new
+    # @event = Event.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -52,13 +52,13 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
+    # @event = Event.find(params[:id])
   end
 
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(params[:event])
+    # @event = Event.new(params[:event])
 
     respond_to do |format|
       if @event.save
@@ -74,7 +74,7 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.json
   def update
-    @event = Event.find(params[:id])
+    # @event = Event.find(params[:id])
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
@@ -90,7 +90,7 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    @event = Event.find(params[:id])
+    # @event = Event.find(params[:id])
     @event.destroy
 
     respond_to do |format|
@@ -100,7 +100,7 @@ class EventsController < ApplicationController
   end
 
   def add
-    @event = Event.find(params[:id])
+    # @event = Event.find(params[:id])
     user = User.find(params[:user_id])
     @registrion = user.registrations.build :event_id => @event.id, :user_id => user.id, :registration_status_id => RegistrationStatus.first.id
     respond_to do |format|

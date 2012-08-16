@@ -1,4 +1,5 @@
 class EventTypesController < ApplicationController
+  authorize_resource
   # GET /event_types
   # GET /event_types.json
   before_filter :authenticate_user!

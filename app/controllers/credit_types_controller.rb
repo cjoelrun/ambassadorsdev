@@ -1,4 +1,5 @@
 class CreditTypesController < ApplicationController
+  authorize_resource
   # GET /credit_types
   # GET /credit_types.json
   def index

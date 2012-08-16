@@ -4,5 +4,8 @@
 
 <%= render :partial => "results" %>
 
-<%= link_to 'New Event', new_event_path, :class => "btn btn-primary" %>
+<% if can? :edit, Event %>
+  <%= link_to 'New Event', new_event_path, :class => "btn btn-primary" %>
+<% end %>
+
 

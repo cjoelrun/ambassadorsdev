@@ -101,3 +101,13 @@ puts 'New committee created: ' << committee6.name
 
 committee7 = Committee.create! :name => 'Selections'
 puts 'New committee created: ' << committee7.name
+
+puts 'SETTING UP ROLES'
+role1 = Role.create! :name => :admin
+puts 'New role created: ' << role1.name
+
+role2 = Role.create! :name => :ambassador
+puts 'New role created: ' << role2.name
+
+role3 = Role.create! :name => :ait
+puts 'New role created: ' << role3.name

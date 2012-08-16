@@ -19,6 +19,10 @@ class Registration < ActiveRecord::Base
     errors[:base] << "Registration already exists" unless registrations.empty?
   end
 
+  def ait
+    event.ait
+  end
+
   private
   def set_status_default
     self.registration_status_id = RegistrationStatus.first.id

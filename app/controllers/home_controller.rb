@@ -1,8 +1,9 @@
 class HomeController < ApplicationController
+  skip_authorization_check
   def index
     if current_user
       @users = User.all
-      @events_today = Event.where("date = ?", Date.today)
+      @events_today = Event.where("date = ?", Date.today).accessible_by(current_ability)
       @my_events = current_user.events.find(:all, :order => "date desc", :limit => 5)
       @birthdays = User.find_birthdays_for(Date.today.beginning_of_month, Date.today.end_of_month)
     end

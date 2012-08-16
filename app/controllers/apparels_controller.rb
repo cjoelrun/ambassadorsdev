@@ -1,4 +1,5 @@
 class ApparelsController < ApplicationController
+  authorize_resource
   # GET /apparels
   # GET /apparels.json
   def index

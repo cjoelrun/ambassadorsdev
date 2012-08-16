@@ -14,4 +14,12 @@ class Event < ActiveRecord::Base
   def datetime_end
     datetime = DateTime.new(date.year, date.month, date.day, end_time.hour, end_time.min, end_time.sec, DateTime.now.offset)
   end
+
+  def start_past?
+    datetime_start.past?
+  end
+
+  def end_past?
+    datetime_end.past?
+  end
 end

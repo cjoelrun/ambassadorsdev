@@ -1,7 +1,8 @@
 * Users
 
 * Events
-  - Restrict signup to future events, aits
+  - Restrict signup to future events in model
+  - Restrict signup to aits
   - JS: check gteq is lteq the lteq
 
 * Applications
