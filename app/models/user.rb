@@ -53,4 +53,18 @@ class User < ActiveRecord::Base
     @events.sum(:hours)
   end
 
+  def committee_hours_month(date=Date.today)
+    committee_id = CreditType.where('name = ?', 'Committee').first.id
+    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
+    @events=events.where('credit_type_id = ? AND date >= ? AND date <= ?', committee_id, date.beginning_of_month, date.end_of_month).where(:registrations => { :registration_status_id => attended_id })
+    @events.sum(:hours)
+  end
+
+  def event_hours_month(date=Date.today)
+    event_id = CreditType.where('name = ?', 'Event').first.id
+    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
+    @events=events.where('credit_type_id = ? AND date >= ? AND date <= ?', event_id, date.beginning_of_month, date.end_of_month).where(:registrations => { :registration_status_id => attended_id })
+    @events.sum(:hours)
+  end
+
 end

@@ -1,4 +1,5 @@
 class YearsController < ApplicationController
+  authorize_resource
   # GET /years
   # GET /years.json
   def index
