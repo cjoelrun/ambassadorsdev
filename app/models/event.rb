@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   belongs_to :credit_type
   belongs_to :apparel
   validates_presence_of :date, :end_time, :hours, :members_needed, :start_time, :title, :event_type, :credit_type
+  accepts_nested_attributes_for :registrations
 
   def datetime_start
     datetime = DateTime.new(date.year, date.month, date.day, start_time.hour, start_time.min, start_time.sec, DateTime.now.offset)

@@ -1,4 +1,6 @@
 Ambassadors::Application.routes.draw do
+  resources :years
+
   resources :committees
   resources :apparels
   resources :registration_statuses

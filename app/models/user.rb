@@ -39,14 +39,18 @@ class User < ActiveRecord::Base
     [first_name,last_name].join(' ')
   end
 
-  def committee_hours
+  def committee_hours_year(year=Year.order("start DESC").first)
     committee_id = CreditType.where('name = ?', 'Committee').first.id
-    events.sum(:hours, :conditions => ['credit_type_id = ?', committee_id])
+    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
+    @events=events.where('credit_type_id = ? AND date >= ? AND date <= ?', committee_id, year.start, year.end).where(:registrations => { :registration_status_id => attended_id })
+    @events.sum(:hours)
   end
 
-  def event_hours
+  def event_hours_year(year=Year.order("start DESC").first)
     event_id = CreditType.where('name = ?', 'Event').first.id
-    events.sum(:hours, :conditions => ['credit_type_id = ?', event_id])
+    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
+    @events=events.where('credit_type_id = ? AND date >= ? AND date <= ?', event_id, year.start, year.end).where(:registrations => { :registration_status_id => attended_id })
+    @events.sum(:hours)
   end
 
 end

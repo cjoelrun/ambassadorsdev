@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   # GET /users.json                                       HTML and AJAX
   #-----------------------------------------------------------------------
   def index
-  authorize! :index, @user
-  @users = User.accessible_by(current_ability, :index).limit(20)
+    authorize! :index, @user
+    @users = User.accessible_by(current_ability, :index).limit(20)
     respond_to do |format|
       format.json { render :json => @users }
       format.xml  { render :xml => @users }
