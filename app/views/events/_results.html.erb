@@ -3,8 +3,7 @@
     <tr>
       <th>Title</th>
       <th>Date</th>
-      <th>Start time</th>
-      <th>End time</th>
+      <th>Time</th>
       <th>Members needed</th>
       <th>Hours</th>
       <th>Location</th>
@@ -18,9 +17,11 @@
       <tr>
         <td><%= event.title %></td>
         <td><%= time_tag(event.date) %></td>
-        <td><%= time_tag event.start_time, :format=>'%l:%M %p' %></td>
-        <td><%= time_tag event.end_time, :format=>'%l:%M %p' %></td>
-        <td><%= event.members_needed %> - <%= event.users.size %> = <%= event.members_needed - event.users.size %></td>
+        <td>
+	  <%= time_tag event.start_time, :format=>'%l:%M %p' %> -
+          <%= time_tag event.end_time, :format=>'%l:%M %p' %>
+	</td>
+        <td><%= event.members_needed - event.users.size %></td>
         <td><%= event.hours %></td>
         <td><%= event.location %></td>
         <td><%= event.instructions %></td>

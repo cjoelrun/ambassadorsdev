@@ -1,12 +1,11 @@
 <%= javascript_include_tag "events" %>
-<%= search_form_for @search, url: events_path, :html => { :class => "form-inline"} do |f| %>
+<%= search_form_for @search, url: events_path, :html => { :class => "form-search well"} do |f| %>
+  <h2>Search</h2>
   <%= f.label :title_cont, "Title:" %>
   <%= f.text_field :title_cont %>
-  <br/>
-  <%= f.label "Date range:" %>
+  <%= f.label "Date:" %>
   <%= f.text_field :date_gteq, :'data-behaviour' => 'datepicker', :'data-date-format' => 'mm/dd/yy', :class => 'input-small' %> - 
   <%= f.text_field :date_lteq, :'data-behaviour' => 'datepicker', :'data-date-format' => 'mm/dd/yy', :class => 'input-small' %>
-  <br/>
   <%= f.label :credit_type_id_eq, "Credit:" %>
   <%= f.select :credit_type_id_eq, CreditType.all.collect {|c| [ c.name, c.id ] }, {:include_blank => true}, :class => 'input-small' %>
   <%= f.label :event_type_id_eq, "Type:" %>

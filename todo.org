@@ -2,6 +2,7 @@
 
 * Events
   - JS: check gteq is lteq the lteq
+  - Require open slot for sign in
 
 * Applications
   - Scaffold ait and ambassador applications

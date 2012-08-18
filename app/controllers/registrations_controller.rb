@@ -3,7 +3,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
   def index
-    @registrations = Registration.where(:user_id => params[:user_id])
+    @registrations = Registration.find(:all, :conditions => {:user_id => params[:user_id]}, :include => :event, :order => "events.date ASC, events.start_time ASC")
 
     respond_to do |format|
       format.html # index.html.erb

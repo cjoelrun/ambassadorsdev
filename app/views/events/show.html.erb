@@ -1,4 +1,6 @@
 <h1><%= @event.title %></h1>
+<span class="label label-info"><%= @event.credit_type.name %></span>
+<span class="label label-info"><%= @event.event_type.name %></span>
 <div class="row">
   <div class="span8">
     <dl>
@@ -7,19 +9,15 @@
 	<%= time_tag @event.date %>
       </dd>
 
-      <dt>Start time:</dt>
+      <dt>Time:</dt>
       <dd>
-	<%= time_tag @event.start_time, :format=>'%l:%M %p' %>
-      </dd>
-
-      <dt>End time:</dt>
-      <dd>
+	<%= time_tag @event.start_time, :format=>'%l:%M %p' %> -
 	<%= time_tag @event.end_time, :format=>'%l:%M %p' %>
       </dd>
 
       <dt>Members needed:</dt>
       <dd>
-	<%= @event.members_needed %>
+	<td><%= @event.members_needed - @event.users.size %></td>
       </dd>
 
       <dt>Hours:</dt>
@@ -42,17 +40,6 @@
 	<% if @event.apparel %>
 	  <%= @event.apparel.name %>
 	<% end -%>
-
-      </dd>
-
-      <dt>Event Type:</dt>
-      <dd>
-	<%= @event.event_type.name %>
-      </dd>
-
-      <dt>Credit Type:</dt>
-      <dd>
-	<%= @event.credit_type.name %>
       </dd>
 
       <dt>Ait:</dt>

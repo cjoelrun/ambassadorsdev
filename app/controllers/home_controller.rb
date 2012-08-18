@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   def index
     if current_user
       @users = User.all
-      @events_today = Event.where("date = ?", Date.today).accessible_by(current_ability)
+      @events_upcoming = Event.where('date + start_time >= ?', DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, DateTime.now.hour, DateTime.now.min, DateTime.now.second, 0))
       @my_events = current_user.events.find(:all, :order => "date desc", :limit => 5)
       @birthdays = User.find_birthdays_for(Date.today.beginning_of_month, Date.today.end_of_month)
     end
@@ -20,4 +20,5 @@ class HomeController < ApplicationController
 
   def ait_letter
   end
+
 end

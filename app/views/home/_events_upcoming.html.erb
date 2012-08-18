@@ -6,7 +6,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @events_today.each do |event| %>
+    <% @events_upcoming.each do |event| %>
       <tr>
 	<td><%= link_to event.title, event %></td>
 	<td><%= time_tag event.start_time, :format=>'%l:%M %p' %> - <%= time_tag event.end_time, :format=>'%l:%M %p' %></td>

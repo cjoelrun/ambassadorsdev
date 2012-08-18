@@ -1,18 +1,15 @@
-<h1>Welome <%= current_user.name %></h1>
-
 <div class="row">
-  <div class="span4">
-    <h3>Events Today</h3>
-    <% if !@events_today.blank? %>
-      <%= render :partial => "events_today" %>
+  <div class="span6">
+    <h3><%= link_to "Upcoming Events", events_path %></h3>
+    <% if !@events_upcoming.blank? %>
+      <%= render :partial => "events_upcoming" %>
     <% else %>
-      <p>No events today</p>
+      <p>No upcoming events</p>
     <% end %>
-
   </div>
 
-  <div class="span4">
-    <h3>My Events</h3>
+  <div class="span6">
+    <h3><%= link_to "My Events", user_event_registrations_path(current_user) %></h3>
     <% if !@my_events.blank? %>
       <%= render :partial => "my_events" %>
     <% else -%>
@@ -20,7 +17,10 @@
     <% end -%>
   </div>
 
-  <div class="span4">
+</div>
+
+<div class="row">
+  <div class="span3">
     <h3>Birthdays</h3>
     <% if !@birthdays.blank? %>
       <%= render :partial => "birthdays" %>
@@ -28,17 +28,14 @@
       <p>No birthdays this month</p>
     <% end -%>
   </div>
-</div>
 
-<div class="row">
-  <div class="span4">
+  <div class="span3">
     <h3>My Stats</h3>
   </div>
-  <div class="span4">
+  <div class="span3">
     <h3>Hour Leaders</h3>
   </div>
-  <div class="span4">
+  <div class="span3">
     <h3>Tour Leaders</h3>
   </div>
 </div>
-

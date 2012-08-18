@@ -18,9 +18,9 @@ class EventsController < ApplicationController
   def index
     @search = @events.search(params[:q])
     if !params[:q]
-      @events = @events.where('date >= ? or (date = ? AND start_time >= ?)', Date.today, Date.today, Time.now).order("date ASC, start_time DESC")
+      @events = @events.where('date >= ? or (date = ? AND start_time >= ?)', Date.today, Date.today, Time.now).order("date ASC, start_time ASC")
     else
-      @events = @search.result(distinct: true).order("date ASC, start_time DESC")
+      @events = @search.result(distinct: true).order("date ASC, start_time ASC")
     end
     respond_with @events
   end

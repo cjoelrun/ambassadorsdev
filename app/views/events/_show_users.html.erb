@@ -4,7 +4,7 @@
     <% @event.users.each do |user| %>
       <tr>
 	<td>
-	  <%= user.name %>
+	  <%= link_to user.name, user %>
 	</td>
       </tr>
     <% end %>
