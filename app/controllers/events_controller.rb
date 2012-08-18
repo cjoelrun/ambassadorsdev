@@ -29,8 +29,9 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     # @event = Event.find(params[:id])
-    @events = current_user.events
     @registration = Registration.find_by_user_id_and_event_id(current_user.id, @event.id)
+    canceled_id = RegistrationStatus.find_by_name("Canceled")
+    @registrations = @event.registrations.where("registration_status_id != ?", canceled_id)
     @user = current_user
 
     respond_to do |format|

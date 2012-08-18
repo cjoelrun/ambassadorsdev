@@ -23,4 +23,13 @@ class Event < ActiveRecord::Base
   def end_past?
     datetime_end.past?
   end
+
+  def filled?
+    open_slots == 0
+  end
+
+  def open_slots
+    canceled_id = RegistrationStatus.find_by_name("Canceled").id
+    open_slots = members_needed - registrations.count(:conditions => ["registration_status_id != ?", canceled_id])
+  end
 end
