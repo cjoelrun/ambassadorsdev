@@ -45,3 +45,16 @@ body { padding-top: 60px; }
     }
 }
 .nav { margin-bottom: 0; }
+
+@media (max-width: 480px) {
+	.hero-unit {
+		padding: 30px;
+	}
+	.hero-unit h1 {
+		font-size: 30px;
+		margin-bottom: 10px;
+	}
+	.hero-unit p {
+		font-size: 15px;
+	}
+}
