@@ -1,2 +1,29 @@
-<h1>Reports#yearly</h1>
-<p>Find me in app/views/reports/yearly.html.erb</p>
+<h1 class="page-header">Yearly Report</h1>
+
+<%= search_form_for @q do |f| %>
+  <%= f.label :name_cont %>
+  <%= f.text_field :name_cont %>
+  <%= f.submit %>
+<% end %>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+	<th>First Name</th>
+	<th>Last Name</th>
+	<th>Hours</th>
+	<th>Tours</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+	<tr>
+	  <td><%= user.first_name %></td>
+	  <td><%= user.last_name %></td>
+	  <td><%= user.committee_hours_year %></td>
+	  <td><%= user.last_name %></td>
+	</tr>
+      <% end %>
+    </tbody>
+  </table>
+

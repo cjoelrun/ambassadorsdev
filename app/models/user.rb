@@ -67,4 +67,15 @@ class User < ActiveRecord::Base
     @events.sum(:hours)
   end
 
+  def service_hours_month(date=Date.today)
+    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
+    @events = events.includes(:credit_type).where('date >= ? AND date <= ?', date.beginning_of_month, date.end_of_month).where(:credit_types => {:service => true}).where(:registrations => { :registration_status_id => attended_id })
+    @events.sum(:hours)
+  end
+
+  def service_hours_year(year=Year.order("start DESC").first)
+    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
+    @events = events.includes(:credit_type).where('date >= ? AND date <= ?', year.start, year.end).where(:credit_types => {:service => true}).where(:registrations => { :registration_status_id => attended_id })
+    @events.sum(:hours)
+  end
 end
