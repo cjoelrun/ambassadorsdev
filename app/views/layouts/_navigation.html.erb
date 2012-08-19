@@ -24,6 +24,16 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
         <ul class="dropdown-menu">
+	  <li class="nav-header">
+	    Reports
+	  </li>
+	  <li>
+	    <%= link_to "Monthly Report", reports_yearly_path %>
+	  </li>
+	  <li>
+	    <%= link_to "Yearly Report", reports_monthly_path %>
+	  </li>
+	  <li class="divider"></li>
           <li>
 	    <%= link_to "Registrations Statuses", registration_statuses_path %>
 	  </li>
