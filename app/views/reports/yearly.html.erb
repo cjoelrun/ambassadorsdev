@@ -1,18 +1,18 @@
 <h1 class="page-header">Yearly Report</h1>
-
-<%= search_form_for @q do |f| %>
-  <%= f.label :name_cont %>
-  <%= f.text_field :name_cont %>
-  <%= f.submit %>
+<p><%= @q.result.to_sql %>
+<%= search_form_for @q, :url => reports_yearly_path, :html => { :class => "form-search well"} do |f| %>
+  <%= f.label :id_eq, "Name:" %>
+  <%= f.select :id_eq, User.all.collect {|u| [ u.name, u.id ] }, {:include_blank => true}, :class => "chzn-select" %>
+  <%= f.submit "Search", :class => "btn btn-primary" %>
 <% end %>
 
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
-	<th>First Name</th>
-	<th>Last Name</th>
-	<th>Hours</th>
-	<th>Tours</th>
+	<th><%= sort_link @q, :first_name %></th>
+	<th><%= sort_link @q, :last_name %></th>
+	<th><%= sort_link @q, :service_hours_yearly, "Hours" %></th>
+	<th><%= sort_link @q, :tours_yearly, "Tours" %></th>
       </tr>
     </thead>
     <tbody>
@@ -20,8 +20,8 @@
 	<tr>
 	  <td><%= user.first_name %></td>
 	  <td><%= user.last_name %></td>
-	  <td><%= user.committee_hours_year %></td>
-	  <td><%= user.last_name %></td>
+	  <td><%= user.service_hours_year %></td>
+	  <td><%= user.tours_year %></td>
 	</tr>
       <% end %>
     </tbody>

@@ -5,7 +5,11 @@
   <%= f.text_field :title_cont %>
   <br class="visible-phone" />
   <%= f.label "Date:" %>
-  <%= f.text_field :date_gteq, :'data-behaviour' => 'datepicker', :'data-date-format' => 'mm/dd/yy', :class => 'input-small' %> - 
+  <% if @date_gteq %>
+    <%= f.text_field :date_gteq, :'data-behaviour' => 'datepicker', :'data-date-format' => 'mm/dd/yy', :class => 'input-small', :value => Date.today %> - 
+  <% else %>
+    <%= f.text_field :date_gteq, :'data-behaviour' => 'datepicker', :'data-date-format' => 'mm/dd/yy', :class => 'input-small' %> - 
+  <% end %>
   <%= f.text_field :date_lteq, :'data-behaviour' => 'datepicker', :'data-date-format' => 'mm/dd/yy', :class => 'input-small' %>
   <br class="visible-phone visible-tablet" />
   <%= f.label :credit_type_id_eq, "Credit:" %>
@@ -13,6 +17,6 @@
   <br class="visible-phone" />
   <%= f.label :event_type_id_eq, "Type:" %>
   <%= f.select :event_type_id_eq, EventType.all.collect {|c| [ c.name, c.id ] }, {:include_blank => true}, :class => 'input-medium' %>
-  <%= f.submit :class => "btn btn-primary" %>
+  <%= f.submit, :class => "btn btn-primary" %>
 <% end %>
 

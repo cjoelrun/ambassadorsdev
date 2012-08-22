@@ -1,6 +1,5 @@
 Ambassadors::Application.routes.draw do
   get "reports/monthly"
-
   get "reports/yearly"
 
   resources :years

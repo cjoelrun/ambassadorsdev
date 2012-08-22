@@ -1,16 +1,21 @@
 <div class="row">
-  <h1>
+  <h1 class="page-header">
     <%= @user.name %> 
     <% if can? :edit, @user %>
       <%= link_to raw("<i class='icon-pencil'></i>"), edit_user_path(@user), :class => "btn btn-mini" %>
     <% end %>
+    <br/>
   </h1>
+  
   <% if !@user.image.blank? -%>
   <div class="span6">
     <%= image_tag @user.image_url(:large), :class => "thumbnail" %>
   </div>
   <% end -%>
   <div class="span6">
+    <% if @user.committee %>
+      <span class="label label-info"><%= @user.committee.name %></span>
+    <% end %>
     <dl>
       <dt>Email<dt> 
 	<dd>
@@ -39,7 +44,7 @@
       <dd>
 	<%= @user.major if @user.major %>
       </dd>
-
+      
       <dt>Hours Enrolled</dt>
       <dd>
 	<%= @user.hours_enrolled if @user.hours_enrolled %>
@@ -55,11 +60,6 @@
 	<%= @user.hometown if @user.hometown %>
       </dd>
 
-      <dt>Committee</dt>
-      <dd>
-	<%= @user.committee.name if @user.committee %>
-      </dd>
-      
       <dt>Local Address</dt>
       <dd>
 	<% if (!local_address(@user.id).blank?) %>

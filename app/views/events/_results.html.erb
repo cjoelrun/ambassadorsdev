@@ -21,7 +21,7 @@
 	  <%= time_tag event.start_time, :format=>'%l:%M %p' %> -
           <%= time_tag event.end_time, :format=>'%l:%M %p' %>
 	</td>
-        <td><%= event.members_needed - event.users.size %></td>
+        <td><%= event.open_slots %></td>
         <td><%= event.hours %></td>
         <td><%= event.location %></td>
         <td><%= event.instructions %></td>

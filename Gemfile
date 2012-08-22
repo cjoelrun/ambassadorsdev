@@ -15,6 +15,7 @@ gem "carrierwave"
 gem 'birthday'
 gem "ransack"
 gem 'bootstrap-datepicker-rails'
+gem 'chosen-rails'
 
 group :development do
   gem 'sqlite3'
