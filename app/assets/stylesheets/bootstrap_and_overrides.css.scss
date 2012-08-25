@@ -6,27 +6,27 @@ body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
 .hero-unit {
-  text-align: center;
+    text-align: center;
 }
 
 #social {
-  margin-top: 45px;
+    margin-top: 45px;
 }
 
 .about .glyph {
-  float: left;
-  opacity: 0.6;
-  max-width: 100%
+    float: left;
+    opacity: 0.6;
+    max-width: 100%
 }
 
 .logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .about h3 {
-  margin: 0 0 5px 35px;
+    margin: 0 0 5px 35px;
 }
 
 /* footer */
@@ -47,14 +47,26 @@ body { padding-top: 60px; }
 .nav { margin-bottom: 0; }
 
 @media (max-width: 480px) {
-	.hero-unit {
-		padding: 30px;
-	}
-	.hero-unit h1 {
-		font-size: 30px;
-		margin-bottom: 10px;
-	}
-	.hero-unit p {
-		font-size: 15px;
-	}
+    .hero-unit {
+	padding: 30px;
+    }
+    .hero-unit h1 {
+	font-size: 30px;
+	margin-bottom: 10px;
+    }
+    .hero-unit p {
+	font-size: 15px;
+    }
+}
+
+.table .success td {
+  background-color: $successBackground;
+}
+
+.table .error td {
+  background-color: $errorBackground;
+}
+
+.table .info td {
+  background-color: $infoBackground;
 }

@@ -4,9 +4,8 @@
 <%= f.label :id_eq, "Name:" %>
 <%= f.select :id_eq, User.all.collect {|u| [ u.name, u.id ] }, {:include_blank => true}, :class => "chzn-select" %>
 
-<%= f.label :roles_id_in, "Role:" %>
-<%= f.collection_select :roles_id_in, Role.all, :id, :name, {}, {:multiple => true, :class => "input, chzn-select"} %>
-
+<%= f.label :roles_id_in, "Role:", :class => "control-label"%>
+<%= f.collection_select :roles_id_in, Role.all, :id, :name, {}, {:multiple => true, :class => "chzn-select"} %>
 <br class="hidden-desktop"/>
 
 <%= f.label :date, "Date:" %>
@@ -34,8 +33,10 @@
 	  </tr>
 	</thead>
 	<tbody>
+	  <% sum = 0 %>
 	  <% for event in events %>
-	    <tr>
+	    <% sum += event.hours if event.registrations.find_by_user_id(user.id).registration_status.name == "Attended" %>
+	    <tr class="<%= table_status(event.registrations.find_by_user_id(user.id).registration_status.name) %>">
               <td><%= event.title %></td>
               <td><%= time_tag(event.date) %></td>
               <td>
@@ -46,6 +47,13 @@
 	      <td><%= event.registrations.find_by_user_id(user.id).registration_status.name %></td>
 	    </tr>
 	  <% end %>
+	  <tr>
+	    <td colspan="3"></td>
+	    <td>
+	      <%= sum %>
+	    </td>
+	    <td></td>
+	  </tr>
 	</tbody>
       </table>
     <% end %>

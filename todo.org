@@ -8,9 +8,8 @@
   - Management
 
 * Reports
-  - YTD Hours
   - Monthly Report
-  - Tour Count
+    - Fix allignment for Roles field
 
 * Home
   - Letter to Amb/AIT
