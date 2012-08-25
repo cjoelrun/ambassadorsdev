@@ -2,7 +2,7 @@
   <% max = @tour_leaders.first.tours %>
   <% num = 0 %>
   <% @tour_leaders.each do |user| %>
-    <li><%= num+=1 %> - <%= user.name %> (<%= user.tours %>)</li>
+    <li><%= num+=1 %> - <%= link_to user.name, User.find_by_id(user.id) %> (<%= user.tours %>)</li>
     <li class="graph">
       <span class="left_poll"></span>
       <span class="center_poll" style="width:<%= (user.tours.to_i * 150)/(max.to_i) %>px;"></span>

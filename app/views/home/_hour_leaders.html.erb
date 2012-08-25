@@ -2,7 +2,7 @@
   <% max = @hour_leaders.first.service_hours %>
   <% num = 0 %>
   <% @hour_leaders.each do |user| %>
-    <li><%= num+=1 %> - <%= user.name %> (<%= user.service_hours %>)</li>
+    <li><%= num+=1 %> - <%= link_to user.name, User.find_by_id(user.id) %> (<%= user.service_hours %>)</li>
     <li class="graph">
       <span class="left_poll"></span>
       <span class="center_poll" style="width:<%= (user.service_hours.to_i * 150)/(max.to_i) %>px;"></span>
