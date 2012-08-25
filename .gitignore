@@ -17,3 +17,4 @@ doc/
 bundler_stubs/
 public/uploads*
 config/heroku_env.rb
+app/assets/stylesheets/.sass-cache/
