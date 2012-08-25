@@ -31,7 +31,7 @@ puts 'New eventType created: ' << event_type10.name
 
 
 puts 'SETTING UP CREDIT TYPES'
-credit_type1 = CreditType.create! :name => 'Event'
+credit_type1 = CreditType.create! :name => 'Event', :service => true
 puts 'New creditType created: ' << credit_type1.name
 
 credit_type2 = CreditType.create! :name => 'Committee'
