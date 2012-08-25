@@ -14,7 +14,7 @@ class HomeController < ApplicationController
       status_attended = RegistrationStatus.find_by_name("Attended")
 
       @hour_leaders = User.find(:all, :limit => 10,
-                                :select => "user_id id, first_name, last_name, sum(hours) as service_hours",
+                                :select => "user_id as id, first_name, last_name, sum(hours) as service_hours",
                                 :joins => 'INNER JOIN "registrations" ON "registrations"."user_id" = "users"."id"
                                            INNER JOIN "events" ON "events"."id" = "registrations"."event_id"
                                            LEFT JOIN "registration_statuses" ON "registration_statuses"."id" = "registrations"."registration_status_id"
@@ -24,7 +24,7 @@ class HomeController < ApplicationController
                                 :group => "user_id, first_name, last_name")
 
       @tour_leaders = User.find(:all, :limit => 10,
-                                :select => "user_id id, first_name, last_name, count(events) tours",
+                                :select => "user_id as id, first_name, last_name, count(events) tours",
                                 :joins => 'INNER JOIN "registrations" ON "registrations"."user_id" = "users"."id"
                                            INNER JOIN "events" ON "events"."id" = "registrations"."event_id"
                                            LEFT JOIN "registration_statuses" ON "registration_statuses"."id" = "registrations"."registration_status_id"
