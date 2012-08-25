@@ -1,7 +1,6 @@
 Ambassadors::Application.routes.draw do
-  get "reports/monthly"
-  get "reports/yearly"
-
+  match 'reports/monthly' => 'reports#monthly', :via => [:get, :post]
+  match 'reports/yearly' => 'reports#yearly', :via => [:get, :post]
   resources :years
 
   resources :committees

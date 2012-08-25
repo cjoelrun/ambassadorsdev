@@ -1,2 +1,54 @@
-<h1>Reports#monthly</h1>
-<p>Find me in app/views/reports/monthly.html.erb</p>
+<h1 class="page-header">Monthly Report</h1>
+<%= search_form_for @q, :url => reports_monthly_path, :html => { :method => :post, :class => "form-search well"} do |f| %>
+
+<%= f.label :id_eq, "Name:" %>
+<%= f.select :id_eq, User.all.collect {|u| [ u.name, u.id ] }, {:include_blank => true}, :class => "chzn-select" %>
+
+<%= f.label :roles_id_in, "Role:" %>
+<%= f.collection_select :roles_id_in, Role.all, :id, :name, {}, {:multiple => true, :class => "input, chzn-select"} %>
+
+<br class="hidden-desktop"/>
+
+<%= f.label :date, "Date:" %>
+<%= select_date @date, :discard_day => true, :start_year => Date.today.year-2, :end_year => (Date.today.year), :use_month_numbers => true %>
+
+<%= f.submit "Search", :class => "btn btn-primary" %>
+
+<% end %>
+
+<% @users.each do |user| %>
+  <div class="well">
+    <h3><%= user.name %></h3>
+
+    <% events = user.events.by_month(@date).group_by { |e| e.credit_type } %>
+    <% events.sort.each do |credit_type, events| %>
+      <h4><%= credit_type.name %> Hours</h4>
+      <table class="table table-strped table-bordered">
+	<thead>
+	  <tr>
+	    <th>Title</th>
+	    <th>Date</th>
+	    <th>Time</th>
+	    <th>Hours</th>
+	    <th>Attendance</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <% for event in events %>
+	    <tr>
+              <td><%= event.title %></td>
+              <td><%= time_tag(event.date) %></td>
+              <td>
+		<%= time_tag event.start_time, :format=>'%l:%M %p' %> -
+		<%= time_tag event.end_time, :format=>'%l:%M %p' %>
+	      </td>
+              <td><%= event.hours %></td>
+	      <td><%= event.registrations.find_by_user_id(user.id).registration_status.name %></td>
+	    </tr>
+	  <% end %>
+	</tbody>
+      </table>
+    <% end %>
+  </div>
+<% end %>
+

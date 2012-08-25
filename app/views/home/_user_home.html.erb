@@ -31,11 +31,22 @@
 
   <div class="span3">
     <h3>My Stats</h3>
+    
   </div>
   <div class="span3">
     <h3>Hour Leaders</h3>
+    <% if !@hour_leaders.blank? %>
+      <%= render :partial => 'hour_leaders' %>
+    <% else %>
+      <p>No hour leaders</p>
+    <% end %>
   </div>
   <div class="span3">
     <h3>Tour Leaders</h3>
+    <% if !@tour_leaders.blank? %>
+      <%= render :partial => 'tour_leaders' %>
+    <% else %>
+      <p>No tour leaders</p>
+    <% end %>
   </div>
 </div>

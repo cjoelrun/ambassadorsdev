@@ -8,6 +8,8 @@ class Event < ActiveRecord::Base
   validates_presence_of :date, :end_time, :hours, :members_needed, :start_time, :title, :event_type, :credit_type
   accepts_nested_attributes_for :registrations
 
+  scope :by_month, lambda { |date| where("date >= ? AND date <= ?", date.beginning_of_month, date.end_of_month) }
+
   def datetime_start
     datetime = DateTime.new(date.year, date.month, date.day, start_time.hour, start_time.min, start_time.sec, DateTime.now.offset)
   end
@@ -25,7 +27,7 @@ class Event < ActiveRecord::Base
   end
 
   def filled?
-    open_slots == 0
+    open_slots <= 0
   end
 
   def open_slots

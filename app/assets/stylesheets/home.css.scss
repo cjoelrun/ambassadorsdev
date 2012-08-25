@@ -2,3 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.thumbnail {
+    display: block;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto; }
+
+.graph {
+    height: 3px;
+    margin-bottom: 3px; 
+    .center_poll {
+	background: #08c;
+	display: block;
+	height: 3px; }}
+
+.poll {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; }
