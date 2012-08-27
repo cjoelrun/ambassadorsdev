@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Month Requirement</th>
     <th>Service</th>
     <th></th>
     <th></th>
@@ -12,6 +13,7 @@
 <% @credit_types.each do |credit_type| %>
   <tr>
     <td><%= credit_type.name %></td>
+    <td><%= credit_type.month_requirement %></td>
     <td><%= credit_type.service %></td>
     <td><%= link_to 'Show', credit_type %></td>
     <td><%= link_to 'Edit', edit_credit_type_path(credit_type) %></td>

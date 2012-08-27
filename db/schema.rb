@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120819031913) do
+ActiveRecord::Schema.define(:version => 20120825202951) do
 
   create_table "apparels", :force => true do |t|
     t.string   "name"
@@ -27,9 +27,10 @@ ActiveRecord::Schema.define(:version => 20120819031913) do
 
   create_table "credit_types", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.boolean  "service"
+    t.integer  "month_requirement"
   end
 
   create_table "event_types", :force => true do |t|
