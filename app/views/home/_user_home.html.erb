@@ -31,8 +31,28 @@
 
   <div class="span3">
     <h3>My Stats</h3>
-    
+    <div id="stats">
+      <h4>Event Hours</h4>
+      <% if (current_user.event_hours_month / @event_type.month_requirement) >= 1 %>
+	<% @color = "#b2dba1" %>
+      <% else %>
+	<% @color = "#dca7a7" %>
+      <% end %>
+      <strong><%= current_user.event_hours_month %></strong> hours this <strong>month</strong>
+      <span class="diameter">
+	<span data-colour="<%= @color %>" data-diameter="15"><%= current_user.event_hours_month %>/<%= @event_type.month_requirement %></span>
+      </span>
+      <br/>
+      <strong><%= current_user.event_hours_year %></strong> hours this <strong>year</strong>
+      <h4>Committee</h4>
+
+      <h4>Tours</h4>
+
+      <h4>Ceremonies</h4>
+
+    </div>
   </div>
+
   <div class="span3">
     <h3>Hour Leaders</h3>
     <% if !@hour_leaders.blank? %>
@@ -41,6 +61,7 @@
       <p>No hour leaders</p>
     <% end %>
   </div>
+
   <div class="span3">
     <h3>Tour Leaders</h3>
     <% if !@tour_leaders.blank? %>

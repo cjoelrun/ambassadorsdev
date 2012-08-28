@@ -22,16 +22,6 @@
 	  <%= mail_to @user.email if @user.email %>
 	</dd>
 
-      <dt>Banner</dt>
-      <dd>
-	<%= "@" + @user.banner if @user.banner %>
-      </dd>
-
-      <dt>UTSA ID</dt>
-      <dd>
-	<%= @user.utsa_id if @user.utsa_id %>
-      </dd>
-
       <dt>Phone</dt> 
       <dd>
 	<%= @user.phone if @user.phone %>

@@ -19,14 +19,6 @@
       <%= f.input :password_confirmation %>
     </div>
 
-    <%= f.input :banner, :wrapper => :prepend do %> 
-      <span class="add-on">@</span><%= f.input_field :banner %>
-    <% end %> 
-
-    <%= f.input :utsa_id, :wrapper => :append do %> 
-      <%= f.input_field :utsa_id %><span class="add-on">@my.utsa.edu</span>
-    <% end %> 
-
     <%= f.input :phone %>
     <%= f.input :birthday, :start_year => Date.today.year - 90, :end_year => Date.today.year - 12, :order => [:month, :day, :year] %>
     <%= f.input :major %>

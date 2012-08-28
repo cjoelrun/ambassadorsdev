@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Date</th>
       <th>Time</th>
     </tr>
   </thead>
@@ -10,6 +11,7 @@
       <% @registration = event.registrations.find_by_user_id(current_user.id) %>
       <tr class="<%= table_status(@registration.registration_status.name) if @registration %>">
 	<td><%= link_to event.title, event %></td>
+	<td><%= time_tag event.date, :format => '%m/%d' %></td>
 	<td><%= time_tag event.start_time, :format=>'%l:%M %p' %> - <%= time_tag event.end_time, :format=>'%l:%M %p' %></td>
       </tr>
     <% end %>

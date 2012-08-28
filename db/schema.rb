@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120825202951) do
+ActiveRecord::Schema.define(:version => 20120828162740) do
 
   create_table "apparels", :force => true do |t|
     t.string   "name"
@@ -121,8 +121,6 @@ ActiveRecord::Schema.define(:version => 20120825202951) do
     t.string   "permanent_apt"
     t.boolean  "same_address"
     t.boolean  "tour_trained"
-    t.string   "banner"
-    t.string   "utsa_id"
     t.string   "image"
     t.string   "major"
     t.integer  "hours_enrolled"
