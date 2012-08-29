@@ -11,6 +11,7 @@ class HomeController < ApplicationController
       @birthdays = User.find_birthdays_for(Date.today.beginning_of_month, Date.today.end_of_month)
 
       @event_type = CreditType.find_by_name("Event")
+      @committee_type = CreditType.find_by_name("Committee")
 
       year = Year.order("start DESC").first
       status_attended = RegistrationStatus.find_by_name("Attended")

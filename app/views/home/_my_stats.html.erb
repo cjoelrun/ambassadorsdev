@@ -1,0 +1,32 @@
+<div id="stats">
+  <h4>Event Hours</h4>
+  <% @color = "#dca7a7" %>
+  <% if (@event_type.month_requirement) %>
+    <% if (current_user.event_hours_month / @event_type.month_requirement) >= 1 %>
+      <% @color = "#b2dba1" %>
+    <% end %>
+  <% end %>
+  <strong><%= current_user.event_hours_month %></strong> hours this <strong>month</strong>
+  <span class="diameter">
+    <span data-colour="<%= @color %>" data-diameter="15"><%= current_user.event_hours_month %>/<%= @event_type.month_requirement %></span>
+  </span>
+  <br/>
+  <strong><%= current_user.event_hours_year %></strong> hours this <strong>year</strong>
+  <h4>Committee</h4>
+  <% @color = "#dca7a7" %>
+  <% if (@event_type.month_requirement) %>
+    <% if (current_user.committee_hours_month / @committee_type.month_requirement) >= 1 %>
+      <% @color = "#b2dba1" %>
+    <% end %>
+  <% end %>
+  <strong><%= current_user.committee_hours_month %></strong> hours this <strong>month</strong>
+  <span class="diameter">
+    <span data-colour="<%= @color %>" data-diameter="15"><%= current_user.committee_hours_month %>/<%= @committee_type.month_requirement %></span>
+  </span>
+  <br/>
+  <strong><%= current_user.committee_hours_year %></strong> hours this <strong>year</strong>
+  <h4>Tours</h4>
+  <strong><%= current_user.tours_year %></strong> tours this <strong>year</strong>
+  <h4>Ceremonies</h4>
+  <strong><%= current_user.ceremonies_year %></strong> ceremonies this <strong>year</strong>
+</div>

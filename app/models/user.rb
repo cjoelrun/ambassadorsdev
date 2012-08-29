@@ -83,4 +83,9 @@ class User < ActiveRecord::Base
     attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
     @events = events.includes(:event_type).where('date >= ? AND date <= ?', year.start, year.end).where(:event_types => {:name => "Tour"}).where(:registrations => { :registration_status_id => attended_id }).count
   end
+
+  def ceremonies_year(year=Year.order("start DESC").first)
+    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
+    @events = events.includes(:event_type).where('date >= ? AND date <= ?', year.start, year.end).where(:event_types => {:name => "Commencement"}).where(:registrations => { :registration_status_id => attended_id }).count
+  end
 end
