@@ -114,7 +114,7 @@ puts 'New role created: ' << role3.name
 
 puts 'SETTING UP YEARS'
 year1 = Year.create! :start => "2011-04-30", :end => "2012-04-13"
-puts 'New year created: ' << year1.name
+puts 'New year created: ' << year1.start.to_s
 
 year2 = Year.create! :start => "2012-04-14", :end => "2013-05-01"
-puts 'New year created: ' << year2.name
+puts 'New year created: ' << year2.start.to_s
