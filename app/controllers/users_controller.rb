@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   #-----------------------------------------------------------------------
   def index
     authorize! :index, @user
-    @users = User.accessible_by(current_ability, :index).limit(20)
+    @users = User.accessible_by(current_ability, :index).order(:first_name, :last_name)
     respond_to do |format|
       format.json { render :json => @users }
       format.xml  { render :xml => @users }

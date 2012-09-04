@@ -103,14 +103,10 @@ committee7 = Committee.create! :name => 'Selections'
 puts 'New committee created: ' << committee7.name
 
 puts 'SETTING UP ROLES'
-role1 = Role.create! :name => :admin
-puts 'New role created: ' << role1.name
-
-role2 = Role.create! :name => :ambassador
-puts 'New role created: ' << role2.name
-
-role3 = Role.create! :name => :ait
-puts 'New role created: ' << role3.name
+["admin", "ambassador", "ait"].each do |name|
+  Role.create!(:name => name)
+  puts 'New role created: ' << name
+end
 
 puts 'SETTING UP YEARS'
 year1 = Year.create! :start => "2011-04-30", :end => "2012-04-13"
