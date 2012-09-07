@@ -4,9 +4,9 @@ class HomeController < ApplicationController
     if current_user
       @users = User.all
 
-      @events_upcoming = Event.where('date + start_time >= ?', DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, DateTime.now.hour, DateTime.now.min, DateTime.now.second, 0))
+      @events_upcoming = Event.where('date + start_time >= ?', DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, DateTime.now.hour, DateTime.now.min, DateTime.now.second, 0)).order("date, start_time").first(5)
 
-      @my_events = current_user.events.find(:all, :conditions => ['date + start_time >= ?', DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, DateTime.now.hour, DateTime.now.min, DateTime.now.second, 0)], :order => "date asc", :limit => 5)
+      @my_events = current_user.events.find(:all, :conditions => ['date + start_time >= ?', DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, DateTime.now.hour, DateTime.now.min, DateTime.now.second, 0)], :order => "date, start_time", :limit => 5)
 
       @birthdays = User.find_birthdays_for(Date.today.beginning_of_month, Date.today.end_of_month)
 

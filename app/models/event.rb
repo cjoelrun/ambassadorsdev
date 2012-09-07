@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :ait, :date, :end_time, :hours, :instructions, :location, :members_needed, :start_time, :title, :event_type_id, :credit_type_id, :apparel_id
+  attr_accessible :ait, :date, :end_time, :hours, :instructions, :location, :members_needed, :start_time, :title, :event_type_id, :credit_type_id, :apparel_id, :old_id
   has_many :registrations, :dependent => :destroy
   has_many :users, :through => :registrations
   belongs_to :event_type

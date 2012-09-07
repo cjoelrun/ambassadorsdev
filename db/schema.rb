@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120904161615) do
+ActiveRecord::Schema.define(:version => 20120907041525) do
 
   create_table "apparels", :force => true do |t|
     t.string   "name"
@@ -45,15 +45,16 @@ ActiveRecord::Schema.define(:version => 20120904161615) do
     t.time     "start_time"
     t.time     "end_time"
     t.integer  "members_needed"
-    t.integer  "hours"
+    t.decimal  "hours",          :precision => 4, :scale => 2
     t.string   "location"
     t.text     "instructions"
     t.boolean  "ait"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.integer  "event_type_id"
     t.integer  "credit_type_id"
     t.integer  "apparel_id"
+    t.integer  "old_id"
   end
 
   create_table "registration_statuses", :force => true do |t|
