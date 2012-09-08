@@ -9,12 +9,10 @@ class Registration < ActiveRecord::Base
   validates_presence_of :user, :event, :registration_status
   validate :validate_uniqueness
 
-  before_create :set_status_default
-
   def validate_uniqueness
     registrations = Registration.find(:all, :conditions => {
-                                        :event_id => self.user_id,
-                                        :user_id => self.event_id })
+                                        :event_id => self.event_id,
+                                        :user_id => self.user_id })
 
     errors[:base] << "Registration already exists" unless registrations.empty?
   end
