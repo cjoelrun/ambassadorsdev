@@ -1,12 +1,14 @@
 <h2>Users</h2>
 <table class="table table-condensed">
   <tbody>
-    <% @registrations.each do |registration| %>
-      <tr>
-	<td>
-	  <%= link_to registration.user.name, registration.user %>
-	</td>
-      </tr>
+    <% if @registrations.any? %>
+      <% @registrations.each do |registration| %>
+	<tr>
+	  <td>
+	    <%= link_to registration.user.name, registration.user if registration %>
+	  </td>
+	</tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
