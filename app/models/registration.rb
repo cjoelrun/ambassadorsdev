@@ -7,7 +7,7 @@ class Registration < ActiveRecord::Base
 
   validates_associated :user, :event
   validates_presence_of :user, :event, :registration_status
-  validate :validate_uniqueness
+  before_create :validate_uniqueness
 
   def validate_uniqueness
     registrations = Registration.find(:all, :conditions => {
