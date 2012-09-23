@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
 
   def monthly
     @q = User.search(params[:q])
-    @users = @q.result(:distinct => true)
+    @users = @q.result(:distinct => true).order("first_name ASC, last_name ASC")
     if params[:date]
       @date = Date::civil(params[:date][:year].to_i, params[:date][:month].to_i, params[:date][:day].to_i)
     else
@@ -13,6 +13,6 @@ class ReportsController < ApplicationController
 
   def yearly
     @q = User.search(params[:q])
-    @users = @q.result(:distinct => true)
+    @users = @q.result(:distinct => true).order("first_name ASC, last_name ASC")
   end
 end
