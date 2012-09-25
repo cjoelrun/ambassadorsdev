@@ -13,10 +13,7 @@
     <%= f.input :location %>
     <%= f.association :apparel %>
     <%= f.input :instructions, :input_html => { :rows => "4" }%>
-    <%= f.input :ait do %>
-      <%= f.input_field :ait %>
-      <span class="help-block">Check if AITs are allowed to attend</span>
-    <% end %>
+    <%= f.input :ait, :lable => "Ait's Allowed" %>
   </div>
 
   <div class="form-actions">
