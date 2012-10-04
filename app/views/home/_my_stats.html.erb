@@ -1,4 +1,8 @@
 <div id="stats">
+  <h4>Total Service Hours</h4>
+  <strong><%= current_user.service_hours_month %></strong> hours this <strong>month</strong>
+  <br/>
+  <strong><%= current_user.service_hours_year %></strong> hours this <strong>year</strong>      
   <h4>Event Hours</h4>
   <% @color = "#dca7a7" %>
   <% if (@event_type.month_requirement) %>
