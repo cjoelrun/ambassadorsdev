@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   devise :encryptable, :encryptor => :md5
 
-  has_many :registrations
+  has_many :registrations, :dependent => :destroy
   has_many :events, :through => :registrations
 
   belongs_to :committee
