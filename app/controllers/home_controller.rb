@@ -44,7 +44,7 @@ class HomeController < ApplicationController
   def about_ait
   end
 
-  def ambassador_letter
+  def ambassadors_letter
   end
 
   def ait_letter
