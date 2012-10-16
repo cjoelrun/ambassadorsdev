@@ -4,6 +4,7 @@
 
   <%= f.label :id_eq, "Name:" %>
   <%= f.select :id_eq, User.all.collect {|u| [ u.name, u.id ] }, {:include_blank => true}, :class => "chzn-select" %>
+  <br class="visible-phone visible-tablet" />
   <%= f.label :committee_id_eq, "Committee:" %>
   <%= f.select :committee_id_eq, Committee.all.collect {|c| [ c.name, c.id ] }, {:include_blank => true} %>
 
