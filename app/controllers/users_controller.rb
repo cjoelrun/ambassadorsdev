@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  respond_to :html, :json
+
   before_filter :authenticate_user!
 
   before_filter :get_user, :only => [:index,:new,:edit]
@@ -11,12 +13,9 @@ class UsersController < ApplicationController
   #-----------------------------------------------------------------------
   def index
     authorize! :index, @user
-    @users = User.accessible_by(current_ability, :index).order(:first_name, :last_name)
-    respond_to do |format|
-      format.json { render :json => @users }
-      format.xml  { render :xml => @users }
-      format.html
-    end
+    @search = User.search(params[:q])
+    @users = @search.result(distinct: true).accessible_by(current_ability, :index).order(:first_name, :last_name)
+    respond_with @users
   end
 
   # GET /users/new
