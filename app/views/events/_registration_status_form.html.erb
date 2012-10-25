@@ -20,7 +20,7 @@
     <% end %>
   <% else %>
     <% if @event.start_past? %>
-      <span class="label label-important">Event Passed</span>
+      <span class="label label-important">Event Registration Period Passed</span>
     <% elsif @event.filled? %>
       <span class="label label-important">Event Filled</span>
     <% end %>

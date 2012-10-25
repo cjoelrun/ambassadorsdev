@@ -18,6 +18,11 @@ class Event < ActiveRecord::Base
     datetime = DateTime.new(date.year, date.month, date.day, end_time.hour, end_time.min, end_time.sec, DateTime.now.offset)
   end
 
+  def registration_past?
+    time = datetime_start - 48.hours
+    time.past?
+  end
+
   def start_past?
     datetime_start.past?
   end
