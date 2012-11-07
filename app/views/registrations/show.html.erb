@@ -2,15 +2,26 @@
 
 <p>
   <b>User:</b>
-  <%= @registration.user_id %>
+  <%= @user.name %>
 </p>
 
 <p>
   <b>Event:</b>
-  <%= @registration.event_id %>
+  <%= @event.title %>
 </p>
 
 <p>
   <b>Registration status:</b>
-  <%= @registration.registration_status_id %>
+  <%= RegistrationStatus.find(@registration.registration_status_id).name %>
 </p>
+
+<% if current_user.has_role? :admin %>
+  <%= form_for([@user,@registration], :url => "/users/" + @user.id.to_s + "/registrations/" + @registration.id.to_s, :method => 'put') do |f| %>
+    <% if @event.datetime_end.past? %>
+      <%= f.select :registration_status_id, RegistrationStatus.all.collect {|c| [ c.name, c.id ] }, {:disabled => RegistrationStatus.where('name = ?', "Will attend").first.id.to_s}, :class => 'input-medium' %>
+    <% else %>
+      <%= f.select :registration_status_id, RegistrationStatus.all.collect {|c| [ c.name, c.id ] }, {:disabled => RegistrationStatus.where('name = ?', "Attended").first.id.to_s}, :class => 'input-medium' %>
+    <% end %>
+    <%= f.submit "Update", :class => "btn-primary" %>
+  <% end %>
+<% end %>

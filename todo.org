@@ -1,22 +1,20 @@
 * Users
+  - Add link to registrations for admins
 
+* Registrations
+  - Add link to registration from index
+  
 * Events
   - JS: check gteq is lteq the lteq
-
-* Applications
-  - Scaffold ait and ambassador applications
-  - Management
-
-* Reports
-  - Monthly Report
-    - Fix allignment for Roles field
+  - Allow swap
+  - Add link to registration from user link for admins
 
 * Home
-  - Letter to Amb/AIT
-  - about amb/ait
+  - Make dynamic, add links to application
 
 * Security
   - Remove MD5
 
 * Migration
-  - LOL
+  - Migrate 
+
