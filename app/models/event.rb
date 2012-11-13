@@ -36,7 +36,7 @@ class Event < ActiveRecord::Base
   end
 
   def open_slots
-    canceled_id = RegistrationStatus.find_by_name("Canceled").id
+    canceled_id = RegistrationStatus.find_by_name("Swap").id
     did_not_attend_id = RegistrationStatus.find_by_name("Signed up but did not attend").id
     open_slots = members_needed - registrations.count(:conditions => ["registration_status_id != ? AND registration_status_id != ? ", canceled_id, did_not_attend_id])
   end

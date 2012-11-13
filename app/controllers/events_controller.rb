@@ -31,7 +31,7 @@ class EventsController < ApplicationController
   def show
     # @event = Event.find(params[:id])
     @registration = Registration.find_by_user_id_and_event_id(current_user.id, @event.id)
-    canceled_id = RegistrationStatus.find_by_name("Canceled")
+    canceled_id = RegistrationStatus.find_by_name("Swap")
     did_not_attend_id = RegistrationStatus.find_by_name("Signed up but did not attend")
     @registrations = @event.registrations.where("registration_status_id != ? AND registration_status_id != ?", canceled_id, did_not_attend_id)
     @user = current_user
