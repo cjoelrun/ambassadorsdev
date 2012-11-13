@@ -35,16 +35,18 @@
 	<tbody>
 	  <% sum = 0 %>
 	  <% for event in events %>
-	    <% sum += event.hours if event.registrations.find_by_user_id(user.id).registration_status.name == "Attended" %>
-	    <tr class="<%= table_status(event.registrations.find_by_user_id(user.id).registration_status.name) %>">
-              <td><%= event.title %></td>
+	    <% registration = event.registrations.find_by_user_id(user.id) %>
+	    <% sum += event.hours if registration.registration_status.name == "Attended" %>
+	    <tr class="<%= table_status(registration.registration_status.name) %>">
+              <td><%= link_to event.title, user_event_registration_path(user, event)
+ %></td>
               <td><%= time_tag(event.date) %></td>
               <td>
 		<%= time_tag event.start_time, :format=>'%l:%M %p' %> -
 		<%= time_tag event.end_time, :format=>'%l:%M %p' %>
 	      </td>
               <td><%= event.hours %></td>
-	      <td><%= event.registrations.find_by_user_id(user.id).registration_status.name %></td>
+	      <td><%= registration.registration_status.name %></td>
 	    </tr>
 	  <% end %>
 	  <tr>

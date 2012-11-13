@@ -14,7 +14,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations/1
   # GET /registrations/1.json
   def show
-    @registration = Registration.find(params[:id])
+    @registration = Registration.find_by_user_id_and_event_id(params[:user_id], params[:id])
     @user = @registration.user
     @event = @registration.event
 

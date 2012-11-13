@@ -26,10 +26,10 @@
 	      <%= link_to image_tag(user.image_url(:thumb)), user %>
 	    <% end -%>
 	  </td>
-	  <td><%= user.first_name %></td>
-	  <td><%= user.last_name %></td>
+	  <td><%= link_to user.first_name, user %></td>
+	  <td><%= link_to user.last_name, user %></td>
 	  <td><%= user.phone %></td>
-	  <td><%= user.email %></td>
+	  <td><%= mail_to user.email %></td>
 	  <td>
 	    <%= render_tour_trained user.tour_trained %>
 	  </td>

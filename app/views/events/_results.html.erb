@@ -9,14 +9,13 @@
       <th>Location</th>
       <th>Instructions</th>
       <th>Ait</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @events.each do |event| %>
       <% @registration = Registration.find_by_user_id_and_event_id(current_user, event.id) %>
       <tr class="<%= table_status(@registration.registration_status.name) if @registration %>">
-        <td><%= event.title %></td>
+        <td><%= link_to event.title, event %></td>
         <td><%= time_tag(event.date) %></td>
         <td>
 	  <%= time_tag event.start_time, :format=>'%l:%M %p' %> -
@@ -27,13 +26,11 @@
         <td><%= event.location %></td>
         <td><%= event.instructions %></td>
         <td><%= render_ait(event.ait) %></td>
-        <td>
-          <%= link_to raw('<i class="icon-eye-open icon-white"></i>'), event, :class => 'btn btn-primary' %>
-	  <% if can? :edit, Event %>
+	<% if can? :update, event %>
+          <td>
             <%= link_to raw('<i class="icon-pencil icon-white"></i>'), edit_event_path(event), :class => 'btn btn-success' %>
-	  <% end %>
-
-        </td>
+          </td>
+	<% end %>
       </tr>
     <% end %>
   </tbody>

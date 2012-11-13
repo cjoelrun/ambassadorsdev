@@ -1,7 +1,7 @@
 <h1 class="page-header">Yearly Report</h1>
 <%= search_form_for @q, :url => reports_yearly_path, :html => { :class => "form-search well"} do |f| %>
-<%= f.label :id_eq, "Name:" %>
-<%= f.select :id_eq, User.all.collect {|u| [ u.name, u.id ] }, {:include_blank => true}, :class => "chzn-select" %>
+<%= f.label :id_eq, "Year:" %>
+<%= f.select :id_eq, Year.all.collect {|y| [ y.start.to_s + " - " + y.end.to_s, y.id ] }, {:include_blank => true} %>
 <%= f.submit "Search", :class => "btn btn-primary" %>
 <% end %>
 
