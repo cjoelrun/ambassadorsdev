@@ -35,6 +35,9 @@ class EventsController < ApplicationController
     did_not_attend_id = RegistrationStatus.find_by_name("Signed up but did not attend")
     @registrations = @event.registrations.where("registration_status_id != ? AND registration_status_id != ?", canceled_id, did_not_attend_id)
     @user = current_user
+    @registration_collection = RegistrationStatus.all.collect {|c| [ c.name, c.id ] }
+    @past_disabled = RegistrationStatus.where('name = ?', "Will attend").first.id.to_s
+    @future_disabled = RegistrationStatus.where('name = ?', "Attended").first.id.to_s
 
     respond_to do |format|
       format.html # show.html.erb

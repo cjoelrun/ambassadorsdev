@@ -1,5 +1,8 @@
 class RegistrationsController < ApplicationController
   authorize_resource
+  
+  before_update :validate_not_full
+  
   # GET /registrations
   # GET /registrations.json
   def index
@@ -81,6 +84,14 @@ class RegistrationsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to registrations_url }
       format.json { head :no_content }
+    end
+  end
+  
+  private
+  def validate_not_full
+    canceled = RegistrationStatus.where("name = ? OR name = ?", "Swap", "Signed up but did not attend")
+    if(canceled.include(registration_status_was))
+        
     end
   end
 end
