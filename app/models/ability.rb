@@ -12,7 +12,9 @@ class Ability
       # Can register for ait events
       can :add, Event, :ait => true
       # Cannot register for past events
-      cannot :add, Event, :start_past? => true, :filled? => true
+      cannot :add, Event, :start_past? => true
+      # Cannot register for filled events
+      cannot :add, Event, :filled? => true
     end
     if user.has_role? :ambassador
       can :read, :all
@@ -22,6 +24,7 @@ class Ability
       can :add, Event
       # Cannot register for past events
       cannot :add, Event, :start_past? => true
+      # Cannot register for filled events
       cannot :add, Event, :filled? => true
     end
     if user.has_role? :admin

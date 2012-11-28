@@ -8,7 +8,6 @@
     <% end %>
     <%= f.submit "Update", :class => "btn-primary" %>
   <% end %>
-  <%= @event.two_days_before? %>
 
 <% else -%> <!-- Check if registration is possible -->
 
@@ -19,12 +18,13 @@
       <%= hidden_field_tag(:user_id, current_user.id) %>
       <%= submit_tag "Register", :class => "btn" %>
     <% end %>
-  <% else %>
-    <% if @event.start_past? %>
+  <% end %>
+
+<% end %>
+
+<% if @event.start_past? %>
       <span class="label label-important">Event Registration Period Passed</span>
     <% elsif @event.filled? %>
       <span class="label label-important">Event Filled</span>
     <% end %>
-  <% end %>
-
 <% end %>

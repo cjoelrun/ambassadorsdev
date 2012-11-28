@@ -1,8 +1,6 @@
 class RegistrationsController < ApplicationController
   authorize_resource
   
-  before_update :validate_not_full
-  
   # GET /registrations
   # GET /registrations.json
   def index
@@ -69,7 +67,7 @@ class RegistrationsController < ApplicationController
         format.html { redirect_to @registration.event, notice: 'Registration was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { redirect_to @registration.event, notice: 'Registration failed.' }
+        format.html { redirect_to @registration.event, alert: 'Registration failed.' }
         format.json { render json: @registration.errors, status: :unprocessable_entity }
       end
     end
@@ -87,11 +85,4 @@ class RegistrationsController < ApplicationController
     end
   end
   
-  private
-  def validate_not_full
-    canceled = RegistrationStatus.where("name = ? OR name = ?", "Swap", "Signed up but did not attend")
-    if(canceled.include(registration_status_was))
-        
-    end
-  end
 end
