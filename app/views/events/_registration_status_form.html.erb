@@ -24,7 +24,6 @@
 
 <% if @event.start_past? %>
       <span class="label label-important">Event Registration Period Passed</span>
-    <% elsif @event.filled? %>
+<% elsif @event.filled? %>
       <span class="label label-important">Event Filled</span>
-    <% end %>
 <% end %>
