@@ -15,6 +15,11 @@ class Ability
       cannot :add, Event, :start_past? => true
       # Cannot register for filled events
       cannot :add, Event, :filled? => true
+      # Can update their own User profiles
+      can :update, User, :id => user.id
+      # Can view registration indexes
+      can :eventIndex, Registration
+      can :fullIndex, Registration
     end
     if user.has_role? :ambassador
       can :read, :all
@@ -27,7 +32,10 @@ class Ability
       # Cannot register for filled events
       cannot :add, Event, :filled? => true
       # Can update their own User profiles
-      can [:update], User, :id => user.id
+      can :update, User, :id => user.id
+      # Can view registration indexes
+      can :eventIndex, Registration
+      can :fullIndex, Registration
     end
     if user.has_role? :admin
       can :manage, :all

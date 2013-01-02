@@ -40,7 +40,9 @@
     <% end %>
 
     <!-- <%= f.input :image %> -->
-    <%= f.association :roles %>
+    <% if current_user.has_role? :admin %>
+	<%= f.association :roles %>
+    <% end %>
 
 
   </div>
