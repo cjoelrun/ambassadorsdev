@@ -26,6 +26,8 @@ class Ability
       cannot :add, Event, :start_past? => true
       # Cannot register for filled events
       cannot :add, Event, :filled? => true
+      # Can update their own User profiles
+      can [:update], User, :id => user.id
     end
     if user.has_role? :admin
       can :manage, :all
