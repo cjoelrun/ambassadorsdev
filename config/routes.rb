@@ -13,6 +13,7 @@ Ambassadors::Application.routes.draw do
     match 'search' => 'events#search',
           on: :collection, via: [:get, :post], as: :search
   end
+  match "events/:id/registrations" => "registrations#eventIndex"
 
   devise_for :users
   resources :users, :except => [:destroy, :create, :new] do

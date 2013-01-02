@@ -12,6 +12,13 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def eventIndex
+    @registrations = Registration.where("event_id = ?", params[:id])
+    respond_to do |format|
+      format.json { render json: @registrations }
+    end
+  end
+
   # GET /registrations/1
   # GET /registrations/1.json
   def show
