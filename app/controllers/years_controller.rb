@@ -3,7 +3,7 @@ class YearsController < ApplicationController
   # GET /years
   # GET /years.json
   def index
-    @years = Year.all
+    @years = Year.order("start DESC")
 
     respond_to do |format|
       format.html # index.html.erb

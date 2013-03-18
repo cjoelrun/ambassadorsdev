@@ -7,6 +7,10 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn btn-primary"%>
+    <% if params[:action] != "new" %>
+      <%= link_to 'Destroy', @year, confirm: 'Are you sure?', method:
+	  :delete, class: "btn btn-danger" %>
+    <% end %>
   </div>
 <% end %>

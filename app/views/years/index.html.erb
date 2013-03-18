@@ -11,9 +11,8 @@
 
 <% @years.each do |year| %>
   <tr>
-    <td><%= year.start %></td>
-    <td><%= year.end %></td>
-    <td><%= link_to 'Show', year %></td>
+    <td><%= l year.start, :format => :long %></td>
+    <td><%= l year.end, :format => :long %></td>
     <td><%= link_to 'Edit', edit_year_path(year) %></td>
     <!-- <td><%= link_to 'Destroy', year, confirm: 'Are you sure?', method: :delete %></td> -->
   </tr>
