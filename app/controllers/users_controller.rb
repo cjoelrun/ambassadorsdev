@@ -66,12 +66,12 @@ class UsersController < ApplicationController
   # DELETE /users/1.json                                  HTML AND AJAX
   #-------------------------------------------------------------------
   def destroy
-    @user.destroy!
+    @user.destroy
 
     respond_to do |format|
       format.json { respond_to_destroy(:ajax) }
       format.xml  { head :ok }
-      format.html { respond_to_destroy(:html) }
+      format.html { redirect_to users_path }
     end
 
   rescue ActiveRecord::RecordNotFound

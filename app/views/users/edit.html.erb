@@ -48,6 +48,10 @@
   </div>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
-    <%= submit_tag 'Reset', :type => :reset, :class => "btn btn-danger" %>
+    <%= submit_tag 'Reset', :type => :reset, :class => "btn
+    btn-warning" %>
+    <%= link_to_if(can?(:delete, @user), "Delete", @user, :confirm =>
+    "Are you sure?", :class => "btn btn-danger", :method => :delete ) %>
+    
   </div>
 <% end %>

@@ -18,7 +18,7 @@ Ambassadors::Application.routes.draw do
   match "/registrations" => "registrations#fullIndex"
 
   devise_for :users
-  resources :users, :except => [:destroy, :create, :new] do
+  resources :users, :except => [:create, :new] do
     resources :registrations, :as => 'event_registrations'
   end
 
