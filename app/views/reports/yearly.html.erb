@@ -1,17 +1,17 @@
 <h1 class="page-header">Yearly Report</h1>
 <%= search_form_for @q, :url => reports_yearly_path, :html => { :class => "form-search well"} do |f| %>
 <%= f.label :id_eq, "Year:" %>
-<%= f.select :id_eq, Year.all.collect {|y| [ y.start.to_s + " - " + y.end.to_s, y.id ] }, {:include_blank => true} %>
+<%= select_tag :year, options_for_select(Year.order("start DESC").collect {|y| [y.start.to_s + " - " + y.end.to_s, y.id]}, @year.id) %>
 <%= f.submit "Search", :class => "btn btn-primary" %>
 <% end %>
 
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th><%= sort_link @q, :first_name %></th>
+      <th><%= sort_link @q, :first_name %></th3>
       <th><%= sort_link @q, :last_name %></th>
-      <th><%= sort_link @q, :service_hours_yearly, "Hours" %></th>
-      <th><%= sort_link @q, :tours_yearly, "Tours" %></th>
+      <th>Hours</th>
+      <th>Tours</th>
     </tr>
   </thead>
   <tbody>
@@ -19,8 +19,8 @@
       <tr>
 	<td><%= user.first_name %></td>
 	<td><%= user.last_name %></td>
-	<td><%= user.service_hours_year %></td>
-	<td><%= user.tours_year %></td>
+	<td><%= user.service_hours_year(@year) %></td>
+	<td><%= user.tours_year(@year) %></td>
       </tr>
     <% end %>
   </tbody>

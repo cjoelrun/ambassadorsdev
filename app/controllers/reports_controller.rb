@@ -14,5 +14,10 @@ class ReportsController < ApplicationController
   def yearly
     @q = User.search(params[:q])
     @users = @q.result(:distinct => true).order("first_name ASC, last_name ASC")
+    if params[:year]
+      @year = Year.find(params[:year])
+    else
+      @year = Year.order("start DESC").first
+    end
   end
 end
