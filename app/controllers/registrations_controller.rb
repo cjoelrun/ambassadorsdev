@@ -29,7 +29,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations/1
   # GET /registrations/1.json
   def show
-    @registration = Registration.find_by_user_id_and_event_id(params[:user_id], params[:id])
+    @registration = Registration.find(params[:id])
     @user = @registration.user
     @event = @registration.event
 
@@ -63,7 +63,7 @@ class RegistrationsController < ApplicationController
     respond_to do |format|
       if @registration.save
         format.html { redirect_to @registration, notice: 'Registration was successfully created.' }
-        format.json { render json: @registration, status: :created, location: @registration }
+        format.json { render json: @registration, status: :created, location: user_event_registration_path(@registration, @registration.user) }
       else
         format.html { render action: "new" }
         format.json { render json: @registration.errors, status: :unprocessable_entity }
