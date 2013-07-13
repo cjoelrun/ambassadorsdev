@@ -1,0 +1,3 @@
+* UTSA Ambassadors
+
+  An app to help the UTSA Ambassadors keep track of their members and service hours
