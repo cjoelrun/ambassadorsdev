@@ -33,59 +33,44 @@ class User < ActiveRecord::Base
   end
 
   def name
-    if(last_name.blank?)
-      first_name
-    end
-    [first_name,last_name].join(' ')
-  end
-
-  def committee_hours_year(year=Year.order("start DESC").first)
-    committee_id = CreditType.where('name = ?', 'Committee').first.id
-    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
-    @events=events.where('credit_type_id = ? AND date >= ? AND date <= ?', committee_id, year.start, year.end).where(:registrations => { :registration_status_id => attended_id })
-    @events.sum(:hours)
-  end
-
-  def event_hours_year(year=Year.order("start DESC").first)
-    event_id = CreditType.where('name = ?', 'Event').first.id
-    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
-    @events=events.where('credit_type_id = ? AND date >= ? AND date <= ?', event_id, year.start, year.end).where(:registrations => { :registration_status_id => attended_id })
-    @events.sum(:hours)
+    [first_name,last_name].compact.join(' ')
   end
 
   def committee_hours_month(date=Date.today)
-    committee_id = CreditType.where('name = ?', 'Committee').first.id
-    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
-    @events=events.where('credit_type_id = ? AND date >= ? AND date <= ?', committee_id, date.beginning_of_month, date.end_of_month).where(:registrations => { :registration_status_id => attended_id })
-    @events.sum(:hours)
+    type = CreditType.find_by_name('Committee')
+    registrations.attended.by_month(date).by_credit_type(type).sum('events.hours').to_d
   end
 
   def event_hours_month(date=Date.today)
-    event_id = CreditType.where('name = ?', 'Event').first.id
-    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
-    @events=events.where('credit_type_id = ? AND date >= ? AND date <= ?', event_id, date.beginning_of_month, date.end_of_month).where(:registrations => { :registration_status_id => attended_id })
-    @events.sum(:hours)
+    type = CreditType.find_by_name('Event')
+    registrations.attended.by_month(date).by_credit_type(type).sum('events.hours').to_d
   end
 
   def service_hours_month(date=Date.today)
-    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
-    @events = events.includes(:credit_type).where('date >= ? AND date <= ?', date.beginning_of_month, date.end_of_month).where(:credit_types => {:service => true}).where(:registrations => { :registration_status_id => attended_id })
-    @events.sum(:hours)
+    registrations.attended.by_month(date).is_service.sum('events.hours').to_d
   end
 
-  def service_hours_year(year=Year.order("start DESC").first)
-    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
-    @events = events.includes(:credit_type).where('date >= ? AND date <= ?', year.start, year.end).where(:credit_types => {:service => true}).where(:registrations => { :registration_status_id => attended_id })
-    @events.sum(:hours)
+  def committee_hours_year(year=Year.order('start DESC').first)
+    type = CreditType.find_by_name('Committee')
+    registrations.attended.by_year(year).by_credit_type(type).sum('events.hours').to_d
   end
 
-  def tours_year(year=Year.order("start DESC").first)
-    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
-    @events = events.includes(:event_type).where('date >= ? AND date <= ?', year.start, year.end).where(:event_types => {:name => "Tour"}).where(:registrations => { :registration_status_id => attended_id }).count
+  def event_hours_year(year=Year.order('start DESC').first)
+    type = CreditType.find_by_name('Event')
+    registrations.attended.by_year(year).by_credit_type(type).sum('events.hours').to_d
   end
 
-  def ceremonies_year(year=Year.order("start DESC").first)
-    attended_id = RegistrationStatus.where('name = ?', 'Attended').first.id
-    @events = events.includes(:event_type).where('date >= ? AND date <= ?', year.start, year.end).where(:event_types => {:name => "Commencement"}).where(:registrations => { :registration_status_id => attended_id }).count
+  def tours_year(year=Year.order('start DESC').first)
+    type = EventType.find_by_name('Tour')
+    registrations.attended.by_year(year).by_event_type(type).sum('events.hours').to_d
+  end
+
+  def ceremonies_year(year=Year.order('start DESC').first)
+    type = EventType.find_by_name('Commencement')
+    registrations.attended.by_year(year).by_event_type(type).sum('events.hours').to_d
+  end
+
+  def service_hours_year(year=Year.order('start DESC').first)
+    registrations.is_service.attended.by_year(year).sum('events.hours').to_d
   end
 end
