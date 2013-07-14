@@ -1,13 +1,8 @@
 * Users
   - Add stat report http://code.shutterstock.com/rickshaw/
 
-* Registrations
-  - Add link to registration from index
-  
 * Events
   - JS: check gteq is lteq the lteq
-  - Allow swap
-  - Add link to registration from user link for admins
 
 * Home
   - Make dynamic, add links to application
@@ -15,8 +10,5 @@
 * Security
   - Remove MD5
 
-* Migration
-  - Migrate 
-
 * Reports
-  - Add years to yearly report
+  - Add export ability
