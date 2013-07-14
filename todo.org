@@ -1,5 +1,5 @@
 * Users
-  - Add link to registrations for admins
+  - Add stat report http://code.shutterstock.com/rickshaw/
 
 * Registrations
   - Add link to registration from index

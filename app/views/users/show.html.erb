@@ -1,12 +1,19 @@
 <div class="row">
+  <% if current_user.has_role? :admin %>
+  <ul class="nav nav-tabs">
+    <li>
+      <%= link_to "Edit", edit_user_path(@user) %>
+    </li>
+    <li>
+      <%= link_to "View Registrations", user_event_registrations_path(@user) %>
+    </li>
+    <% end %>
+  </ul>
+  
   <h1 class="page-header">
     <%= @user.name %> 
-    <% if can? :edit, @user %>
-      <%= link_to raw("<i class='icon-pencil'></i>"), edit_user_path(@user), :class => "btn btn-mini" %>
-    <% end %>
-    <br/>
   </h1>
-  
+
   <% if !@user.image.blank? -%>
   <div class="span6">
     <%= image_tag @user.image_url(:large), :class => "thumbnail" %>

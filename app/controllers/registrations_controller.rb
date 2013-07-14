@@ -4,6 +4,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
   def index
+    @user = User.find_by_id(params[:user_id])
     @registrations = Registration.find(:all, :conditions => {:user_id => params[:user_id]}, :include => :event, :order => "events.date DESC, events.start_time DESC")
 
     respond_to do |format|
