@@ -2,8 +2,14 @@ class ReportsController < ApplicationController
   authorize_resource :class => false
 
   def monthly
-    @q = User.search(params[:q])
-    @users = @q.result(:distinct => true).order("first_name ASC, last_name ASC")
+    if params[:q]
+      @q = User.search(params[:q])
+      @users = @q.result(:distinct => true).order("first_name ASC, last_name ASC")
+    else
+      @ambassador_id = Role.find_by_name("ambassador").id
+      @q = User.search(params[:q])
+      @users = @q.result(:distinct => true).order("first_name ASC, last_name ASC").joins(:roles).where(:roles => {:name => "ambassador"})
+    end
     if params[:date]
       @date = Date::civil(params[:date][:year].to_i, params[:date][:month].to_i, params[:date][:day].to_i)
     else

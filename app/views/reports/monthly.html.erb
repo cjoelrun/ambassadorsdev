@@ -5,7 +5,7 @@
 <%= f.select :id_eq, User.all.collect {|u| [ u.name, u.id ] }, {:include_blank => true}, :class => "chzn-select" %>
 
 <%= f.label :roles_id_in, "Role:", :class => "control-label"%>
-<%= f.collection_select :roles_id_in, Role.all, :id, :name, {}, {:multiple => true, :class => "chzn-select"} %>
+<%= f.collection_select :roles_id_in, Role.all, :id, :name, {:selected => @ambassador_id}, {:multiple => true, :class => "chzn-select"} %>
 <br class="hidden-desktop"/>
 
 <%= f.label :date, "Date:" %>
