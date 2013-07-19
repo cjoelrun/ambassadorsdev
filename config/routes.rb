@@ -21,6 +21,7 @@ Ambassadors::Application.routes.draw do
   resources :users, :except => [:create, :new] do
     resources :registrations, :as => 'event_registrations'
   end
+  match "stats" => "users#stats"
 
   match "events/:id/add" => "events#add"
   match "about_ambassadors" => "home#about_ambassadors"

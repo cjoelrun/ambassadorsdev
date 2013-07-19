@@ -128,6 +128,13 @@ class UsersController < ApplicationController
     respond_to_not_found(:js, :xml, :html)
   end
 
+  def stats
+    @user = User.first
+    # @user = current_user
+    @event_type = CreditType.find_by_name("Event")
+    @committee_type = CreditType.find_by_name("Committee")
+  end
+
   def accessible_roles
     @accessible_roles = Role.accessible_by(current_ability,:read)
   end
