@@ -39,7 +39,6 @@
       <p class="help-inline">Check only if you've been offically tour trained</p>
     <% end %>
 
-    <!-- <%= f.input :image %> -->
     <% if current_user.has_role? :admin %>
 	<%= f.association :roles %>
     <% end %>

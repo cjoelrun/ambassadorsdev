@@ -10,15 +10,10 @@ class User < ActiveRecord::Base
 
   belongs_to :committee
 
-  mount_uploader :image, ImageUploader
-
   acts_as_birthday :birthday
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :password, :password_confirmation, :name, :email, :remember_me, :confirmed_at, :phone, :birthday, :local_street, :local_city, :local_state, :local_zip, :local_apt, :permanent_street, :permanent_city, :permanent_state, :permanent_zip, :permanent_apt, :same_address, :tour_trained, :role_ids, :image, :image_cache, :remove_image, :major, :hours_enrolled, :graduation_date, :hometown, :committee_id, :old_id
-
-  validates_integrity_of :image
-  validates_processing_of :image
+  attr_accessible :first_name, :last_name, :password, :password_confirmation, :name, :email, :remember_me, :confirmed_at, :phone, :birthday, :local_street, :local_city, :local_state, :local_zip, :local_apt, :permanent_street, :permanent_city, :permanent_state, :permanent_zip, :permanent_apt, :same_address, :tour_trained, :role_ids, :major, :hours_enrolled, :graduation_date, :hometown, :committee_id, :old_id
 
   def valid_password?(password)
     return false if encrypted_password.blank?
@@ -72,5 +67,10 @@ class User < ActiveRecord::Base
 
   def service_hours_year(year=Year.order('start DESC').first)
     registrations.is_service.attended.by_year(year).sum('events.hours').to_d
+  end
+
+  def avatar_url()
+    gravatar_id = Digest::MD5.hexdigest(email.downcase)
+    "http://gravatar.com/avatar/#{gravatar_id}.png"
   end
 end

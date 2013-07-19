@@ -20,11 +20,7 @@
       <% @users.each do |user| %>
 	<tr>
 	  <td>
-	    <% if user.image.blank? %>
-	      <%= link_to raw("<i class='icon-user icon-white'></i>"), user, :class => 'btn btn-primary' %> 
-	    <% else -%>
-	      <%= link_to image_tag(user.image_url(:thumb)), user %>
-	    <% end -%>
+	    <%= link_to image_tag(user.avatar_url), user %>
 	  </td>
 	  <td><%= link_to user.first_name, user %></td>
 	  <td><%= link_to user.last_name, user %></td>

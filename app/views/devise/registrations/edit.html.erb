@@ -1,5 +1,5 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+<div class="alert alert-info"><%= link_to "Setup a Gravatar to change your image", "http://gravatar.com" %></div>
 <%= simple_form_for(resource, :as => resource_name, :url => user_registration_path, :html => { :method => :put, :class => "form-horizontal", :multipart => true }) do |f| %>
   <%= f.error_notification %>
 
@@ -51,10 +51,6 @@
       <p class="help-inline">Check only if you've been offically tour trained</p>
     <% end %>
     
-    <!-- <%= f.input :image %> -->
-    <%= f.input :remove_image, :as => :boolean %>
-    <!-- <%= f.input :image_cache, :as => :hidden %> -->
-
     <%= f.input :current_password, :hint => "We need your current password to confirm your changes" %>
   </div>
   <div class="form-actions">
