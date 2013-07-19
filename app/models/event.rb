@@ -8,14 +8,15 @@ class Event < ActiveRecord::Base
   validates_presence_of :date, :end_time, :hours, :members_needed, :start_time, :title, :event_type, :credit_type
   accepts_nested_attributes_for :registrations
 
-  scope :by_month, lambda { |date| where("date >= ? AND date <= ?", date.beginning_of_month, date.end_of_month) }
+  scope :by_month, lambda { |date| where(:date => date.beginning_of_month...date.end_of_month) }
+  scope :by_year, lambda { |year| where(:date => year.start...year.end) }
 
   def datetime_start
-    datetime = DateTime.new(date.year, date.month, date.day, start_time.hour, start_time.min, start_time.sec, DateTime.now.offset)
+    DateTime.new(date.year, date.month, date.day, start_time.hour, start_time.min, start_time.sec, DateTime.now.offset)
   end
 
   def datetime_end
-    datetime = DateTime.new(date.year, date.month, date.day, end_time.hour, end_time.min, end_time.sec, DateTime.now.offset)
+    DateTime.new(date.year, date.month, date.day, end_time.hour, end_time.min, end_time.sec, DateTime.now.offset)
   end
 
   def two_days_before?
@@ -38,7 +39,6 @@ class Event < ActiveRecord::Base
   def open_slots
     canceled_id = RegistrationStatus.find_by_name("Swap").id
     did_not_attend_id = RegistrationStatus.find_by_name("Signed up but did not attend").id
-    open_slots = members_needed - registrations.count(:conditions => ["registration_status_id != ? AND registration_status_id != ? ", canceled_id, did_not_attend_id])
+    members_needed - registrations.count(:conditions => ["registration_status_id != ? AND registration_status_id != ? ", canceled_id, did_not_attend_id])
   end
-
 end
