@@ -1,5 +1,6 @@
 * Users
   - Add stat report http://code.shutterstock.com/rickshaw/
+  - Add ability to list/edit roles, and delete users
 
 * Events
   - JS: check gteq is lteq the lteq
@@ -11,4 +12,7 @@
   - Remove MD5
 
 * Reports
-  - Add export ability
+  - Add export ability to years
+    - events, registrations for that year
+    - summations
+    - http://railscasts.com/episodes/362-exporting-csv-and-excel
