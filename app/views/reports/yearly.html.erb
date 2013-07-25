@@ -1,4 +1,5 @@
 <h1 class="page-header">Yearly Report</h1>
+<%= link_to "Excel", reports_export_path(format: "xls") %>
 <%= search_form_for @q, :url => reports_yearly_path, :html => { :class => "form-search well"} do |f| %>
 <%= f.label :id_eq, "Year:" %>
 <%= select_tag :year, options_for_select(Year.order("start DESC").collect {|y| [y.start.to_s + " - " + y.end.to_s, y.id]}, @year.id) %>

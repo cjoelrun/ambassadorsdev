@@ -4,20 +4,106 @@
   xmlns:x="urn:schemas-microsoft-com:office:excel"
   xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
   xmlns:html="http://www.w3.org/TR/REC-html40">
-  <Worksheet ss:Name="Sheet1">
+  <Worksheet ss:Name="Users">
     <Table>
       <Row>
         <Cell><Data ss:Type="String">ID</Data></Cell>
-        <Cell><Data ss:Type="String">Name</Data></Cell>
-        <Cell><Data ss:Type="String">Release Date</Data></Cell>
-        <Cell><Data ss:Type="String">Price</Data></Cell>
+        <Cell><Data ss:Type="String">First Name</Data></Cell>
+	<Cell><Data ss:Type="String">Last Name</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Phone</Data></Cell>
+	<Cell><Data ss:Type="String">Birthday</Data></Cell>
+	<Cell><Data ss:Type="String">Local Street</Data></Cell>
+	<Cell><Data ss:Type="String">Local City</Data></Cell>
+	<Cell><Data ss:Type="String">Local State</Data></Cell>
+	<Cell><Data ss:Type="String">Local Zip</Data></Cell>
+	<Cell><Data ss:Type="String">Local Apt</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent Street</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent City</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent State</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent Zip</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent Apt</Data></Cell>
+	<Cell><Data ss:Type="String">Same Address</Data></Cell>
+	<Cell><Data ss:Type="String">Tour Trained</Data></Cell>
+	<Cell><Data ss:Type="String">Major</Data></Cell>
+	<Cell><Data ss:Type="String">Hours Enrolled</Data></Cell>
+	<Cell><Data ss:Type="String">Graduation Date</Data></Cell>
+	<Cell><Data ss:Type="String">Hometown</Data></Cell>
+	<Cell><Data ss:Type="String">Committee</Data></Cell>
       </Row>
-    <% @products.each do |product| %>
+    <% @regisrations.each do |registration| %>
       <Row>
-        <Cell><Data ss:Type="Number"><%= product.id %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= product.name %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= product.released_on %></Data></Cell>
-        <Cell><Data ss:Type="Number"><%= product.price %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= @user.id %></Data></Cell>
+        <Cell><Data ss:Type="String">First Name</Data></Cell>
+	<Cell><Data ss:Type="String">Last Name</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Phone</Data></Cell>
+	<Cell><Data ss:Type="String">Birthday</Data></Cell>
+	<Cell><Data ss:Type="String">Local Street</Data></Cell>
+	<Cell><Data ss:Type="String">Local City</Data></Cell>
+	<Cell><Data ss:Type="String">Local State</Data></Cell>
+	<Cell><Data ss:Type="String">Local Zip</Data></Cell>
+	<Cell><Data ss:Type="String">Local Apt</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent Street</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent City</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent State</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent Zip</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent Apt</Data></Cell>
+	<Cell><Data ss:Type="String">Same Address</Data></Cell>
+	<Cell><Data ss:Type="String">Tour Trained</Data></Cell>
+	<Cell><Data ss:Type="String">Major</Data></Cell>
+	<Cell><Data ss:Type="String">Hours Enrolled</Data></Cell>
+	<Cell><Data ss:Type="String">Graduation Date</Data></Cell>
+	<Cell><Data ss:Type="String">Hometown</Data></Cell>
+	<Cell><Data ss:Type="String">Committee</Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+
+  <Worksheet ss:Name="Events">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">User ID</Data></Cell>
+	<Cell><Data ss:Type="String">User Name</Data></Cell>
+        <Cell><Data ss:Type="String">Event ID</Data></Cell>
+        <Cell><Data ss:Type="String">Event Name</Data></Cell>
+	<Cell><Data ss:Type="String">Status</Data></Cell>
+      </Row>
+    <% @regisrations.each do |registration| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= registration.id %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= registration.user_id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= registration.user.full_name %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= registration.event_id %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= registration.event.name %></Data></Cell>
+	<Cell><Data ss:Type="Number"><%= registration.registration_status_id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= registration.registration_status.name %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+
+  <Worksheet ss:Name="Registrations">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">User ID</Data></Cell>
+	<Cell><Data ss:Type="String">User Name</Data></Cell>
+        <Cell><Data ss:Type="String">Event ID</Data></Cell>
+        <Cell><Data ss:Type="String">Event Name</Data></Cell>
+	<Cell><Data ss:Type="String">Status</Data></Cell>
+      </Row>
+    <% @regisrations.each do |registration| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= registration.id %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= registration.user_id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= registration.user.full_name %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= registration.event_id %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= registration.event.name %></Data></Cell>
+	<Cell><Data ss:Type="Number"><%= registration.registration_status_id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= registration.registration_status.name %></Data></Cell>
       </Row>
     <% end %>
     </Table>

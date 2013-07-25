@@ -26,4 +26,17 @@ class ReportsController < ApplicationController
       @year = Year.order("start DESC").first
     end
   end
+
+  def export
+    if params[:year]
+      @year = Year.find(params[:year])
+    else
+      @year = Year.order("start DESC").first
+    end
+    @events = Event.by_year(@year)
+    @users = User.all
+    respond_to do |format|
+      format.xls
+    end
+  end
 end
