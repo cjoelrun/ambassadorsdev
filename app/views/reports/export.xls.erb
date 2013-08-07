@@ -30,32 +30,38 @@
 	<Cell><Data ss:Type="String">Graduation Date</Data></Cell>
 	<Cell><Data ss:Type="String">Hometown</Data></Cell>
 	<Cell><Data ss:Type="String">Committee</Data></Cell>
+	<Cell><Data ss:Type="String">Committee Name</Data></Cell>
       </Row>
-    <% @regisrations.each do |registration| %>
+    <% @users.each do |user| %>
       <Row>
-        <Cell><Data ss:Type="String"><%= @user.id %></Data></Cell>
-        <Cell><Data ss:Type="String">First Name</Data></Cell>
-	<Cell><Data ss:Type="String">Last Name</Data></Cell>
-        <Cell><Data ss:Type="String">Email</Data></Cell>
-        <Cell><Data ss:Type="String">Phone</Data></Cell>
-	<Cell><Data ss:Type="String">Birthday</Data></Cell>
-	<Cell><Data ss:Type="String">Local Street</Data></Cell>
-	<Cell><Data ss:Type="String">Local City</Data></Cell>
-	<Cell><Data ss:Type="String">Local State</Data></Cell>
-	<Cell><Data ss:Type="String">Local Zip</Data></Cell>
-	<Cell><Data ss:Type="String">Local Apt</Data></Cell>
-	<Cell><Data ss:Type="String">Permanent Street</Data></Cell>
-	<Cell><Data ss:Type="String">Permanent City</Data></Cell>
-	<Cell><Data ss:Type="String">Permanent State</Data></Cell>
-	<Cell><Data ss:Type="String">Permanent Zip</Data></Cell>
-	<Cell><Data ss:Type="String">Permanent Apt</Data></Cell>
-	<Cell><Data ss:Type="String">Same Address</Data></Cell>
-	<Cell><Data ss:Type="String">Tour Trained</Data></Cell>
-	<Cell><Data ss:Type="String">Major</Data></Cell>
-	<Cell><Data ss:Type="String">Hours Enrolled</Data></Cell>
-	<Cell><Data ss:Type="String">Graduation Date</Data></Cell>
-	<Cell><Data ss:Type="String">Hometown</Data></Cell>
-	<Cell><Data ss:Type="String">Committee</Data></Cell>
+        <Cell><Data ss:Type="Number"><%= user.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= user.first_name %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.last_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= user.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= user.phone %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.birthday %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.local_street %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.local_city %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.local_state %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.local_zip %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.local_apt%></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.permanent_street %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.permanent_city %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.permanent_state %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.permanent_zip %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.permanent_apt %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.same_address %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.tour_trained %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.major %></Data></Cell>
+	<Cell><Data ss:Type="Number"><%= user.hours_enrolled %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.graduation_date %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.hometown %></Data></Cell>
+	<Cell><Data ss:Type="Number"><%= user.committee_id %></Data></Cell>
+	<% if user.committee %>
+	  <Cell><Data ss:Type="String"><%= user.committee.name %></Data></Cell>
+	<% else %>
+	  <Cell><Data ss:Type="String"></Data></Cell>
+	<% end %>
       </Row>
     <% end %>
     </Table>
@@ -65,21 +71,44 @@
     <Table>
       <Row>
         <Cell><Data ss:Type="String">ID</Data></Cell>
-        <Cell><Data ss:Type="String">User ID</Data></Cell>
-	<Cell><Data ss:Type="String">User Name</Data></Cell>
-        <Cell><Data ss:Type="String">Event ID</Data></Cell>
-        <Cell><Data ss:Type="String">Event Name</Data></Cell>
-	<Cell><Data ss:Type="String">Status</Data></Cell>
+        <Cell><Data ss:Type="String">Title</Data></Cell>
+	<Cell><Data ss:Type="String">Date</Data></Cell>
+	<Cell><Data ss:Type="String">Start Time</Data></Cell>
+        <Cell><Data ss:Type="String">End Time</Data></Cell>
+        <Cell><Data ss:Type="String">Members Needed</Data></Cell>
+	<Cell><Data ss:Type="String">Hours</Data></Cell>
+	<Cell><Data ss:Type="String">Location</Data></Cell>
+	<Cell><Data ss:Type="String">Instructions</Data></Cell>
+	<Cell><Data ss:Type="String">AIT</Data></Cell>
+	<Cell><Data ss:Type="String">Event Type ID</Data></Cell>
+	<Cell><Data ss:Type="String">Event Type Name</Data></Cell>
+	<Cell><Data ss:Type="String">Credit Type ID</Data></Cell>
+	<Cell><Data ss:Type="String">Credit Type Name</Data></Cell>
+	<Cell><Data ss:Type="String">Apparel ID</Data></Cell>
+	<Cell><Data ss:Type="String">Apparel Name</Data></Cell>
       </Row>
-    <% @regisrations.each do |registration| %>
+    <% @events.each do |event| %>
       <Row>
-        <Cell><Data ss:Type="Number"><%= registration.id %></Data></Cell>
-        <Cell><Data ss:Type="Number"><%= registration.user_id %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= registration.user.full_name %></Data></Cell>
-        <Cell><Data ss:Type="Number"><%= registration.event_id %></Data></Cell>
-	<Cell><Data ss:Type="String"><%= registration.event.name %></Data></Cell>
-	<Cell><Data ss:Type="Number"><%= registration.registration_status_id %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= registration.registration_status.name %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= event.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.title %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.start_time %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= event.end_time %></Data></Cell>
+	<Cell><Data ss:Type="Number"><%= event.members_needed %></Data></Cell>
+	<Cell><Data ss:Type="Number"><%= event.hours %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event.location %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= event.instructions %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= event.ait %></Data></Cell>
+	<Cell><Data ss:Type="Number"><%= event.event_type_id %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= event.event_type.name %></Data></Cell>
+	<Cell><Data ss:Type="Number"><%= event.credit_type_id %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= event.credit_type.name %></Data></Cell>
+	<Cell><Data ss:Type="Number"><%= event.apparel_id %></Data></Cell>
+	<% if event.apparel %>
+	  <Cell><Data ss:Type="String"><%= event.apparel.name %></Data></Cell>
+	<% else %>
+	  <Cell><Data ss:Type="String"></Data></Cell>
+	<% end %>
       </Row>
     <% end %>
     </Table>
@@ -94,14 +123,15 @@
         <Cell><Data ss:Type="String">Event ID</Data></Cell>
         <Cell><Data ss:Type="String">Event Name</Data></Cell>
 	<Cell><Data ss:Type="String">Status</Data></Cell>
+	<Cell><Data ss:Type="String">Status Name</Data></Cell>
       </Row>
-    <% @regisrations.each do |registration| %>
+    <% @registrations.each do |registration| %>
       <Row>
         <Cell><Data ss:Type="Number"><%= registration.id %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= registration.user_id %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= registration.user.full_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= registration.user.name %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= registration.event_id %></Data></Cell>
-	<Cell><Data ss:Type="String"><%= registration.event.name %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= registration.event.title %></Data></Cell>
 	<Cell><Data ss:Type="Number"><%= registration.registration_status_id %></Data></Cell>
         <Cell><Data ss:Type="String"><%= registration.registration_status.name %></Data></Cell>
       </Row>

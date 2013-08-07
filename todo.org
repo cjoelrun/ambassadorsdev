@@ -13,6 +13,5 @@
 
 * Reports
   - Add export ability to years
-    - events, registrations for that year
     - summations
-    - http://railscasts.com/episodes/362-exporting-csv-and-excel
+  - Add ability to destroy yearly data
