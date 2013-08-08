@@ -1,6 +1,7 @@
 Ambassadors::Application.routes.draw do
   match 'reports/monthly' => 'reports#monthly', :via => [:get, :post]
   match 'reports/yearly' => 'reports#yearly', :via => [:get, :post]
+  match 'reports/yearly' => 'reports#destroy_year', :via => [:delete]
   match 'reports/export' => 'reports#export', :via => [:get]
   resources :years
 

@@ -6,9 +6,10 @@
 <%= f.submit "Search", :class => "btn btn-primary" %>
 <%= link_to "Excel", reports_export_path(:year_id => @year.id, format:
 					 "xls"), class: "btn" %>
-<%= link_to "Destroy", "#", class: "btn btn-danger pull-right",
-    confirm: '!!! Are you sure. All the events and registrations will
-be destroyed !!!' %>
+<%= link_to "Destroy", reports_yearly_path(:year_id => @year.id),
+    class: "btn btn-danger pull-right", confirm: "!!! Are you
+sure. All the events and registrations will be destroyed !!!",
+    method: :delete%>
 <% end %>
 
 <table class="table table-striped table-bordered">

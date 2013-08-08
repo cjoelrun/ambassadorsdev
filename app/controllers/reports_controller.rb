@@ -42,7 +42,17 @@ class ReportsController < ApplicationController
   end
   
   def destroy_year
-    
+    if params[:year_id]
+      @year = Year.find(params[:year_id])
+    else
+      @year = Year.order("start DESC").first
+    end
+    Event.by_year(@year).delete_all
+    @year.delete
+    respond_to do |format|
+      format.html { redirect_to reports_yearly_path }
+      format.json { head :no_content }
+    end
   end
 
 end

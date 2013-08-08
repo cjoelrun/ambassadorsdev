@@ -14,4 +14,3 @@
 * Reports
   - Add export ability to years
     - summations
-  - Add ability to destroy yearly data
