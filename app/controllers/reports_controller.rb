@@ -25,6 +25,9 @@ class ReportsController < ApplicationController
     else
       @year = Year.order("start DESC").first
     end
+    @service_sum = Registration.attended.is_service.by_year(@year).sum('events.hours')
+    tour = EventType.find_by_name("Tour")
+    @tour_sum = Registration.attended.by_year(@year).by_event_type(tour).count
   end
 
   def export

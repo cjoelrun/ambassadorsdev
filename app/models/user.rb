@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
 
   def tours_year(year=Year.order('start DESC').first)
     type = EventType.find_by_name('Tour')
-    registrations.attended.by_year(year).by_event_type(type).sum('events.hours').to_d
+    registrations.attended.by_year(year).by_event_type(type).count
   end
 
   def ceremonies_year(year=Year.order('start DESC').first)

@@ -4,6 +4,69 @@
   xmlns:x="urn:schemas-microsoft-com:office:excel"
   xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
   xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Year">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">First Name</Data></Cell>
+	<Cell><Data ss:Type="String">Last Name</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Phone</Data></Cell>
+	<Cell><Data ss:Type="String">Birthday</Data></Cell>
+	<Cell><Data ss:Type="String">Local Street</Data></Cell>
+	<Cell><Data ss:Type="String">Local City</Data></Cell>
+	<Cell><Data ss:Type="String">Local State</Data></Cell>
+	<Cell><Data ss:Type="String">Local Zip</Data></Cell>
+	<Cell><Data ss:Type="String">Local Apt</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent Street</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent City</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent State</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent Zip</Data></Cell>
+	<Cell><Data ss:Type="String">Permanent Apt</Data></Cell>
+	<Cell><Data ss:Type="String">Same Address</Data></Cell>
+	<Cell><Data ss:Type="String">Tour Trained</Data></Cell>
+	<Cell><Data ss:Type="String">Major</Data></Cell>
+	<Cell><Data ss:Type="String">Hours Enrolled</Data></Cell>
+	<Cell><Data ss:Type="String">Graduation Date</Data></Cell>
+	<Cell><Data ss:Type="String">Hometown</Data></Cell>
+	<Cell><Data ss:Type="String">Committee</Data></Cell>
+	<Cell><Data ss:Type="String">Committee Name</Data></Cell>
+      </Row>
+    <% @users.each do |user| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= user.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= user.first_name %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.last_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= user.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= user.phone %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.birthday %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.local_street %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.local_city %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.local_state %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.local_zip %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.local_apt%></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.permanent_street %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.permanent_city %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.permanent_state %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.permanent_zip %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.permanent_apt %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.same_address %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.tour_trained %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.major %></Data></Cell>
+	<Cell><Data ss:Type="Number"><%= user.hours_enrolled %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.graduation_date %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= user.hometown %></Data></Cell>
+	<Cell><Data ss:Type="Number"><%= user.committee_id %></Data></Cell>
+	<% if user.committee %>
+	  <Cell><Data ss:Type="String"><%= user.committee.name %></Data></Cell>
+	<% else %>
+	  <Cell><Data ss:Type="String"></Data></Cell>
+	<% end %>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+
   <Worksheet ss:Name="Users">
     <Table>
       <Row>
