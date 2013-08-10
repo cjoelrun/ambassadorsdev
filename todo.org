@@ -10,7 +10,3 @@
 
 * Security
   - Remove MD5
-
-* Reports
-  - Add export ability to years
-    - summations
