@@ -1,10 +1,13 @@
 <%= javascript_include_tag "users" %>
-<%= search_form_for @search, url: users_path, :html => { :class => "form-search well"} do |f| %>
+<%= search_form_for @q, url: users_path, :html => { :class => "form-search well"} do |f| %>
   <h2>Search</h2>
 
   <%= f.label :id_eq, "Name:" %>
   <%= f.select :id_eq, User.all.collect {|u| [ u.name, u.id ] }, {:include_blank => true}, :class => "chzn-select" %>
   <br class="visible-phone visible-tablet" />
+  <%= f.label :roles_id_in, "Role:", :class => "control-label"%>
+  <%= f.collection_select :roles_id_in, Role.all, :id, :name, {:selected => @active_user_roles}, {:multiple => true, :class => "chzn-select"} %>
+<br class="hidden-desktop"/>
   <%= f.label :committee_id_eq, "Committee:" %>
   <%= f.select :committee_id_eq, Committee.all.collect {|c| [ c.name, c.id ] }, {:include_blank => true} %>
 

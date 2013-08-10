@@ -13,8 +13,14 @@ class UsersController < ApplicationController
   #-----------------------------------------------------------------------
   def index
     authorize! :index, @user
-    @search = User.search(params[:q])
-    @users = @search.result(distinct: true).accessible_by(current_ability, :index).order(:first_name, :last_name)
+    @q = User.search(params[:q])
+    @users = @q.result(distinct: true).order(:first_name, :last_name)
+    if params[:q]
+      @active_user_roles = params[:q][:roles_id_in]
+    else
+      @active_user_roles = Role.where(:name => ["ambassador", "ait"]).map(&:id) 
+      @users = @users.joins(:roles).where(:roles => {:id => @active_user_roles})
+    end
     respond_with @users
   end
 
