@@ -4,6 +4,8 @@
   <tr>
     <th>Start</th>
     <th>End</th>
+    <th>Service Hours</th>
+    <th>Tours</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +15,8 @@
   <tr>
     <td><%= l year.start, :format => :long %></td>
     <td><%= l year.end, :format => :long %></td>
+    <td><%= year.servicehours %></td>
+    <td><%= year.tours %></td>
     <td><%= link_to 'Edit', edit_year_path(year) %></td>
     <!-- <td><%= link_to 'Destroy', year, confirm: 'Are you sure?', method: :delete %></td> -->
   </tr>

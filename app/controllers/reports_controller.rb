@@ -48,13 +48,13 @@ class ReportsController < ApplicationController
   end
   
   def destroy_year
-    if params[:year_id]
-      @year = Year.find(params[:year_id])
-    else
-      @year = Year.order("start DESC").first
-    end
+    @year = Year.find(params[:year_id])
+    @year.servicehours = Registration.attended.is_service.by_year(@year).sum('events.hours')
+    tour = EventType.find_by_name("Tour")
+    @year.tours = Registration.attended.by_year(@year).by_event_type(tour).count
+    @year.save
+    
     Event.by_year(@year).delete_all
-    @year.delete
     respond_to do |format|
       format.html { redirect_to reports_yearly_path }
       format.json { head :no_content }
