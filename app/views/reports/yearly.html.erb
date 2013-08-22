@@ -10,7 +10,7 @@
   <%= f.collection_select :roles_id_in, Role.all, :id, :name, {:selected => @active_user_roles}, {:multiple => true, :class => "chzn-select"} %>
   <br class="hidden-desktop"/>
   <%= f.submit "Search", :class => "btn btn-primary" %>
-  <%= link_to "Excel", reports_export_path(:year_id => @year.id, format:
+  <%= link_to "Excel", reports_export_path(:year => @year.id, format:
 					   "xls"), class: "btn" %>
   <%= link_to "Destroy", reports_yearly_path(:year_id => @year.id),
       class: "btn btn-danger pull-right", confirm: "!!! Are you
