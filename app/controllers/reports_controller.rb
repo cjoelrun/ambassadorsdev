@@ -31,7 +31,7 @@ class ReportsController < ApplicationController
   end
 
   def export
-    @year = Year.find(params[:year_id])
+    @year = Year.find(params[:year])
     @events = Event.by_year(@year)
     @registrations = Registration.by_year(@year)
     @users = User.all
