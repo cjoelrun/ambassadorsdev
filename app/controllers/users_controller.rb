@@ -73,9 +73,9 @@ class UsersController < ApplicationController
   #-------------------------------------------------------------------
   def destroy
     @user.destroy
-
+    flash[:notice] = "User removed"
     respond_to do |format|
-      format.json { respond_to_destroy(:ajax) }
+      format.js
       format.xml  { head :ok }
       format.html { redirect_to users_path }
     end
@@ -124,6 +124,7 @@ class UsersController < ApplicationController
         format.xml  { head :ok }
         format.html { render :action => :edit }
       else
+        flash[:error] = "Error updating user"
         format.json { render :text => "Could not update user", :status => :unprocessable_entity } #placeholder
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
         format.html { render :action => :edit, :status => :unprocessable_entity }
@@ -140,6 +141,19 @@ class UsersController < ApplicationController
 
   def get_user
     @current_user = current_user
+  end
+
+  def manage
+    authorize! :detroy, @user
+    @q = User.search(params[:q])
+    @users = @q.result(distinct: true).order(:first_name, :last_name)
+    if params[:q]
+      @active_user_roles = params[:q][:roles_id_in]
+    else
+      @active_user_roles = Role.where(:name => ["ambassador", "ait"]).map(&:id) 
+      @users = @users.joins(:roles).where(:roles => {:id => @active_user_roles})
+    end
+    respond_with @users
   end
 
 end

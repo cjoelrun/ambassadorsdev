@@ -33,12 +33,14 @@
       <div class="row">
         <div class="span12">
           <%= render 'layouts/messages' %>
-          <%= yield %>
-	  <footer class="footer">
-	    <%= render 'layouts/footer' %>
-	  </footer>
-        </div> <!-- end of .span12 -->
-      </div>   <!-- end of .row -->
-    </div> <!--! end of .container -->
+	  <div id="flash_hook"></div>
+            <%= yield %>
+
+	    <footer class="footer">
+	      <%= render 'layouts/footer' %>
+	    </footer>
+          </div> <!-- end of .span12 -->
+	</div>   <!-- end of .row -->
+      </div> <!--! end of .container -->
   </body>
 </html>

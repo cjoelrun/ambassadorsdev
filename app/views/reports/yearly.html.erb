@@ -3,6 +3,12 @@
 <%= search_form_for @q, :url => reports_yearly_path, :html => { :class => "form-search well"} do |f| %>
 <%= f.label :id_eq, "Year:" %>
 <%= select_tag :year, options_for_select(Year.order("start DESC").collect {|y| [y.start.to_s + " - " + y.end.to_s, y.id]}, @year.id) %>
+<%= f.label :id_eq, "Name:" %>
+<%= f.select :id_eq, User.all.collect {|u| [ u.name, u.id ] }, {:include_blank => true}, :class => "chzn-select" %>
+
+<%= f.label :roles_id_in, "Role:", :class => "control-label"%>
+<%= f.collection_select :roles_id_in, Role.all, :id, :name, {:selected => @active_user_roles}, {:multiple => true, :class => "chzn-select"} %>
+<br class="hidden-desktop"/>
 <%= f.submit "Search", :class => "btn btn-primary" %>
 <%= link_to "Excel", reports_export_path(:year_id => @year.id, format:
 					 "xls"), class: "btn" %>

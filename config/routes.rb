@@ -15,23 +15,24 @@ Ambassadors::Application.routes.draw do
     match 'search' => 'events#search',
           on: :collection, via: [:get, :post], as: :search
   end
-  match "events/:id/registrations" => "registrations#eventIndex"
+  match 'events/:id/registrations' => 'registrations#eventIndex'
 
-  match "/registrations" => "registrations#fullIndex"
+  match '/registrations' => 'registrations#fullIndex'
 
+  match 'users/manage' => 'users#manage', :via => [:get]
   devise_for :users
   resources :users, :except => [:create, :new] do
     resources :registrations, :as => 'event_registrations'
   end
 
-  match "events/:id/add" => "events#add"
-  match "about_ambassadors" => "home#about_ambassadors"
-  match "about_ait" => "home#about_ait"
-  match "ambassadors_letter" => "home#ambassadors_letter"
-  match "ait_letter" => "home#ait_letter"
+  match 'events/:id/add' => 'events#add'
+  match 'about_ambassadors' => 'home#about_ambassadors'
+  match 'about_ait' => 'home#about_ait'
+  match 'ambassadors_letter' => 'home#ambassadors_letter'
+  match 'ait_letter' => 'home#ait_letter'
 
   authenticated :user do
     root :to => 'home#index'
   end
-  root :to => "home#index"
+  root :to => 'home#index'
 end

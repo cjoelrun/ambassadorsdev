@@ -1,5 +1,5 @@
 <%= javascript_include_tag "users" %>
-<%= search_form_for @q, url: users_path, :html => { :class => "form-search well"} do |f| %>
+<%= search_form_for @q, url: path, :html => { :class => "form-search well"} do |f| %>
   <h2>Search</h2>
 
   <%= f.label :id_eq, "Name:" %>
