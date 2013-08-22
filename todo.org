@@ -1,6 +1,5 @@
 * Users
   - Add stat report http://code.shutterstock.com/rickshaw/
-  - Add ability to list/edit roles, and delete users
 
 * Events
   - JS: check gteq is lteq the lteq
