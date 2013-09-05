@@ -40,5 +40,11 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     end
+    if user.has_role? :ambassador
+      # Cannot register for past events
+      cannot :add, Event, :start_past? => true
+      # Cannot register for filled events
+      cannot :add, Event, :filled? => true
+    end
   end
 end
