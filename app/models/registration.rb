@@ -7,8 +7,8 @@ class Registration < ActiveRecord::Base
 
   validates_associated :user, :event
   validates_presence_of :user, :event, :registration_status
-  validate :ensure_slot_before_update, 
-           :on => :update, 
+  validate :ensure_slot_before_update,
+           :on => :update,
            :if => :registration_status_id_changed?
 
   # Prevents duplicate registrations
@@ -29,7 +29,7 @@ class Registration < ActiveRecord::Base
 
   # Prevent users re-registering for a full event
   def ensure_slot_before_update
-    canceled = RegistrationStatus.where("name = ? OR name = ?", "Swap", "Signed up but did not attend")
+    canceled = RegistrationStatus.where("name = ? OR name = ?", "I need a replacement! (NOT allowed 48 hrs or less)", "Signed up but did not attend")
     if(canceled.exists?(registration_status_id_was))
       if(event.filled?)
         errors.add(:registration_status, "Event is filled")
