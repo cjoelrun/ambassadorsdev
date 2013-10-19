@@ -8,8 +8,8 @@ class Event < ActiveRecord::Base
   validates_presence_of :date, :end_time, :hours, :members_needed, :start_time, :title, :event_type, :credit_type
   accepts_nested_attributes_for :registrations
 
-  scope :by_month, lambda { |date| where(:date => date.beginning_of_month...date.end_of_month) }
-  scope :by_year, lambda { |year| where(:date => year.start...year.end) }
+  scope :by_month, lambda { |date| where(:date => date.beginning_of_month..date.end_of_month) }
+  scope :by_year, lambda { |year| where(:date => year.start..year.end) }
 
   def datetime_start
     DateTime.new(date.year, date.month, date.day, start_time.hour, start_time.min, start_time.sec, DateTime.now.offset)
