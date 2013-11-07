@@ -7,13 +7,14 @@
 
     <h2>Requirements</h2>
     <p>
-      A candidate for the Ambassador program is a <strong>full-time student</strong> who has <strong>been at UTSA at least one long semester</strong> and has a <strong>minimum cumulative GPA of 2.75</strong>. Applicants should have <strong>at least one academic year remaining at UTSA</strong> to serve as an Ambassador. Excellent leadership and communication skills are also characteristics that we look for in potential Ambassadors. And, of course, students who have a willingness to learn about UTSA and have a sincere desire to represent the University should definitely apply!
+      A candidate for the Ambassador program is a <strong>full-time student</strong> who has <strong>been at UTSA at least one long semester</strong> and has a <strong>minimum cumulative GPA of 3.00</strong>. Applicants should have <strong>at least one academic year remaining at UTSA</strong> to serve as an Ambassador. Excellent leadership and communication skills are also characteristics that we look for in potential Ambassadors. And, of course, students who have a willingness to learn about UTSA and have a sincere desire to represent the University should definitely apply!
     </p>
 
       <% if(true) %>
-        <p>Applications for the <%= get_current_term() %> academic year are <a href="https://p4.secure.hostingprod.com/@utsaambassadors.org/ssl/prelogin/application.php">available</a>.  The deadline for application submissions is <%= print "Date" %>. Applications should be completed and submitted electronically during this period.</p>
+        <p>Applications for the <%= get_current_term() %> academic year are <a href="https://utsa.collegiatelink.net/organization/utsaambassadors">available</a>.  The deadline for application submissions is <%= print "Date" %>. Applications should be completed and submitted electronically during this period.</p>
       <% else %>
-        <p>Are you a UTSA Freshman who wants to become involved? Come read about the <%= link_to "Ambassadors in Training", about_ait_path %>!</p>
+        <p>Applications for the <%= get_current_term() %> academic year are closed.</p>
       <% end %>
+    <p>Are you a UTSA Freshman who wants to become involved? Come read about the <%= link_to "Ambassadors in Training", about_ait_path %>!</p>
   </div>
 </div>
