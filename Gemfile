@@ -1,28 +1,28 @@
 source 'https://rubygems.org'
-
+ruby '1.9.2'
 gem 'therubyracer'
 gem 'rails', '3.2.11'
-gem "bootstrap-sass", ">= 2.0.1"
+gem 'bootstrap-sass', '>= 2.0.1'
 gem 'jquery-rails'
-gem "devise", ">= 2.1.0.rc"
-gem "devise_invitable", ">= 1.0.1"
+gem 'devise', '>= 2.1.0.rc'
+gem 'devise_invitable', '>= 1.0.1'
 gem 'devise-encryptable'
-gem "cancan", ">= 1.6.7"
-gem "rolify", ">= 3.1.0"
+gem 'cancan', '>= 1.6.7'
+gem 'rolify', '>= 3.1.0'
 gem 'simple_form'
 gem 'birthday'
-gem "ransack"
+gem 'ransack'
 gem 'bootstrap-datepicker-rails'
 gem 'chosen-rails'
 
 group :development do
   gem 'sqlite3'
-  gem "rspec-rails", ">= 2.9.0.rc2"
-  gem "guard", ">= 0.6.2"
-  gem "guard-bundler", ">= 0.1.3"
-  gem "guard-rails", ">= 0.0.3"
-  gem "guard-rspec", ">= 0.4.3"
-  gem "factory_girl_rails", ">= 3.2.0"
+  gem 'rspec-rails', '>= 2.9.0.rc2'
+  gem 'guard', '>= 0.6.2'
+  gem 'guard-bundler', '>= 0.1.3'
+  gem 'guard-rails', '>= 0.0.3'
+  gem 'guard-rspec', '>= 0.4.3'
+  gem 'factory_girl_rails', '>= 3.2.0'
 end
 
 group :assets do
@@ -34,14 +34,14 @@ end
 group :test do
   gem 'rb-fsevent'
   gem 'growl'
-  gem "factory_girl_rails", ">= 3.2.0"
-  gem "email_spec", ">= 1.2.1"
-  gem "rspec-rails", ">= 2.9.0.rc2"
-  gem "guard", ">= 0.6.2"
-  gem "guard-bundler", ">= 0.1.3"
-  gem "guard-rails", ">= 0.0.3"
-  gem "guard-rspec", ">= 0.4.3"
-  gem "factory_girl_rails", ">= 3.2.0"
+  gem 'factory_girl_rails', '>= 3.2.0'
+  gem 'email_spec', '>= 1.2.1'
+  gem 'rspec-rails', '>= 2.9.0.rc2'
+  gem 'guard', '>= 0.6.2'
+  gem 'guard-bundler', '>= 0.1.3'
+  gem 'guard-rails', '>= 0.0.3'
+  gem 'guard-rspec', '>= 0.4.3'
+  gem 'factory_girl_rails', '>= 3.2.0'
 end
 
 group :production do
