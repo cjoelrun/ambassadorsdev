@@ -35,7 +35,7 @@ GEM
       activesupport
     bootstrap-datepicker-rails (0.6.16)
       railties (>= 3.0)
-    bootstrap-sass (2.0.2)
+    bootstrap-sass (2.0.4.2)
     builder (3.0.4)
     cancan (1.6.7)
     chosen-rails (0.9.8.2)

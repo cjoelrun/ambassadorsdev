@@ -3,17 +3,17 @@
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Events <b class="caret"></b></a>
       <ul class="dropdown-menu">
-	<li>
-	  <%= link_to('Events', events_path) %>
-	</li>
-	<li>
-	  <%= link_to('My Events', user_event_registrations_path(current_user)) %>
-	</li>
-	<% if current_user.has_role? :admin %>
-	  <li>
-	    <%= link_to('Create Event', new_event_path) %>
-	  </li>
-	<% end -%>
+        <li>
+          <%= link_to('Events', events_path) %>
+        </li>
+        <li>
+          <%= link_to('My Events', user_event_registrations_path(current_user)) %>
+        </li>
+        <% if current_user.has_role? :admin %>
+          <li>
+            <%= link_to('Create Event', new_event_path) %>
+          </li>
+        <% end -%>
       </ul>
     </li>
 
@@ -24,40 +24,43 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
         <ul class="dropdown-menu">
-	  <li class="nav-header">
-	    Reports
-	  </li>
-	  <li>
-	    <%= link_to "Monthly Report", reports_monthly_path %>
-	  </li>
-	  <li>
-	    <%= link_to "Yearly Report", reports_yearly_path %>
-	  </li>
-	  <li class="divider"></li>
-	  <li class="nav-header">
-	    Manage
-	  </li>
-	  <li>
-	    <%= link_to "Edit Users", users_manage_path %>
-	  </li>
+          <li class="nav-header">
+            Reports
+          </li>
           <li>
-	    <%= link_to "Registrations Statuses", registration_statuses_path %>
-	  </li>
-	  <li>
-	    <%= link_to "Credit Types", credit_types_path %>
-	  </li>
-	  <li>
-	    <%= link_to "Event Types", event_types_path %>
-	  </li>
+            <%= link_to "Monthly Report", reports_monthly_path %>
+          </li>
           <li>
-	    <%= link_to "Apparels", apparels_path %>
-	  </li>
-	  <li>
-	    <%= link_to "Committees", committees_path %>
-	  </li>
-	  <li>
-	    <%= link_to "Years", years_path %>
-	  </li>
+            <%= link_to "Yearly Report", reports_yearly_path %>
+          </li>
+          <li class="divider"></li>
+          <li class="nav-header">
+            Manage
+          </li>
+          <li>
+            <%= link_to "Edit Users", users_manage_path %>
+          </li>
+          <li>
+            <%= link_to "Registrations Statuses", registration_statuses_path %>
+          </li>
+          <li>
+            <%= link_to "Credit Types", credit_types_path %>
+          </li>
+          <li>
+            <%= link_to "Event Types", event_types_path %>
+          </li>
+          <li>
+            <%= link_to "Apparels", apparels_path %>
+          </li>
+          <li>
+            <%= link_to "Committees", committees_path %>
+          </li>
+          <li>
+            <%= link_to "Years", years_path %>
+          </li>
+          <li>
+            <%= link_to "Deadlines", deadlines_path %>
+          </li>
         </ul>
       </li>
     <% end %>
@@ -65,18 +68,18 @@
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <b class="caret"></b></a>
       <ul class="dropdown-menu">
-	<li>
-	  <%= link_to('About Ambassadors', about_ambassadors_path) %>
-	</li>
-	<li>
-	  <%= link_to('About AITs', about_ait_path) %>
-	</li>
-	<li>
-	  <%= link_to('Prospective Ambassadors', ambassadors_letter_path) %>
-	</li>
-	<li>
-	  <%= link_to('Prospective AITs', ait_letter_path) %>
-	</li>
+        <li>
+          <%= link_to('About Ambassadors', about_ambassadors_path) %>
+        </li>
+        <li>
+          <%= link_to('About AITs', about_ait_path) %>
+        </li>
+        <li>
+          <%= link_to('Prospective Ambassadors', ambassadors_letter_path) %>
+        </li>
+        <li>
+          <%= link_to('Prospective AITs', ait_letter_path) %>
+        </li>
       </ul>
     </li>
   <% end -%>
@@ -91,26 +94,26 @@
     <% end %>
     <ul class="dropdown-menu">
       <% if user_signed_in? %>
-	<li>
-	  <%= link_to('View account', user_path(current_user)) %>
-	</li>
-	<li>
-	  <%= link_to('Edit account', edit_user_registration_path) %>
-	</li>
-	<li class="divider"></li>
+        <li>
+          <%= link_to('View account', user_path(current_user)) %>
+        </li>
+        <li>
+          <%= link_to('Edit account', edit_user_registration_path) %>
+        </li>
+        <li class="divider"></li>
       <% end -%>
 
       <% if user_signed_in? %>
-	<li>
-	  <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>        
-	</li>
+        <li>
+          <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>
+        </li>
       <% else %>
-	<li>
-	  <%= link_to('Login', new_user_session_path)  %>
-	</li>
-	<!-- <li> -->
-	<!--   <%= link_to('Sign up', new_user_registration_path)  %> -->
-	<!-- </li> -->
+        <li>
+          <%= link_to('Login', new_user_session_path)  %>
+        </li>
+        <!-- <li> -->
+        <!--   <%= link_to('Sign up', new_user_registration_path)  %> -->
+        <!-- </li> -->
       <% end %>
     </ul>
   </li>

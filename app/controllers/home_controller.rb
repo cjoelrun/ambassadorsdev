@@ -39,9 +39,11 @@ class HomeController < ApplicationController
   end
 
   def about_ambassadors
+    @deadline = Deadline.find_by_name("Ambassador")
   end
 
   def about_ait
+    @deadline = Deadline.find_by_name("AIT")
   end
 
   def ambassadors_letter

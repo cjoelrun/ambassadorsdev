@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @deadline.name %>
+</p>
+
+<p>
+  <b>Deadline:</b>
+  <%= @deadline.deadline %>
+</p>
+
+
+<%= link_to 'Edit', edit_deadline_path(@deadline) %> |
+<%= link_to 'Back', deadlines_path %>
