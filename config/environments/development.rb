@@ -1,3 +1,6 @@
+require 'tlsmail'
+Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
+
 Ambassadors::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -53,6 +56,7 @@ Ambassadors::Application.configure do
     user_name: ENV['SMTP_USERNAME'],
     password: ENV['SMTP_PASSWORD'],
     enable_starttls_auto: true,
+    ssl: true,
     authentication: :plain
   }
 end

@@ -14,6 +14,8 @@ gem 'birthday'
 gem 'ransack'
 gem 'bootstrap-datepicker-rails'
 gem 'chosen-rails'
+gem 'mail'
+gem 'tlsmail'
 
 group :development do
   gem 'sqlite3'
