@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "admin@utsaambassadors.org"
+  config.mailer_sender = ENV['SMTP_USERNAME']
   require Rails.root.join('lib', 'devise', 'encryptable', 'encryptors', 'md5')
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
