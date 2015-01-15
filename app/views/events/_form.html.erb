@@ -3,7 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :title %>
-    <%= f.input :date, :start_year => Date.today.year, :end_year => Date.today.year + 1, :order => [:month, :day, :year] %>
+    <%= f.input :date, :start_year => Date.today.year, :start_year => Date.today.year - 1, :end_year => Date.today.year + 1, :order => [:month, :day, :year] %>
     <%= f.input :start_time , :ampm => true, :position => Time.now.end_of_day %>
     <%= f.input :end_time, :ampm => true %>
     <%= f.input :members_needed %>
