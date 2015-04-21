@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
+
 ruby '1.9.2'
-gem 'therubyracer'
+
+gem 'therubyracer', '0.10.1'
 gem 'rails', '3.2.11'
 gem 'bootstrap-sass', '>= 2.0.1'
 gem 'jquery-rails'

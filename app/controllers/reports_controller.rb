@@ -42,15 +42,15 @@ class ReportsController < ApplicationController
       format.xls
     end
   end
-  
+
   def destroy_year
     @year = Year.find(params[:year_id])
     @year.servicehours = Registration.attended.is_service.by_year(@year).sum('events.hours')
     tour = EventType.find_by_name("Tour")
     @year.tours = Registration.attended.by_year(@year).by_event_type(tour).count
     @year.save
-    
-    Event.by_year(@year).delete_all
+
+    Event.by_year(@year).destroy_all
     respond_to do |format|
       format.html { redirect_to reports_yearly_path }
       format.json { head :no_content }
