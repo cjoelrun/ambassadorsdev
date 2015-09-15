@@ -33,7 +33,7 @@ class EventsController < ApplicationController
     @registration = Registration.find_by_user_id_and_event_id(current_user.id, @event.id)
     canceled_id = RegistrationStatus.find_by_name("I need a replacement! (NOT allowed 48 hrs or less)")
     did_not_attend_id = RegistrationStatus.find_by_name("Signed up but did not attend")
-    @registrations = @event.registrations.where("registration_status_id != ? AND registration_status_id != ?", canceled_id, did_not_attend_id).order("id")
+    @registrations = @event.registrations.where("registration_status_id != ? AND registration_status_id != ?", canceled_id, did_not_attend_id).order("updated_at")
     @user = current_user
     @registration_collection = RegistrationStatus.all.collect {|c| [ c.name, c.id ] }
     @past_disabled = RegistrationStatus.where('name = ?', "Will attend").first.id.to_s
