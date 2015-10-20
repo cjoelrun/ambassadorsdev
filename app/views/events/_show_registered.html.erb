@@ -1,7 +1,7 @@
 <% if @registrations.any? %>
-  <ul class="list-group">
+  <ul>
   <% @registrations.each do |registration| %>
-    <li class="list-group-item list-group-item-<%= table_status(registration.registration_status.name) if registration%>">
+    <li class="text-<%= table_status(registration.registration_status.name) if registration%>">
       <%= link_to registration.user.name, registration.user if registration %>
       <% if can? :update, registration %>
         <span class="pull-right">
