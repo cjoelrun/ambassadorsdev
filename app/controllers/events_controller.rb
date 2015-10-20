@@ -121,6 +121,9 @@ class EventsController < ApplicationController
   end
 
   def report
+    canceled_id = RegistrationStatus.find_by_name("I need a replacement! (NOT allowed 48 hrs or less)")
+    did_not_attend_id = RegistrationStatus.find_by_name("Signed up but did not attend")
+
     @search = @events.search(params[:q])
     if !params[:q]
       @date_gteq = Date.today
