@@ -1,0 +1,21 @@
+<%= javascript_include_tag "events" %>
+<%= search_form_for @search, url: events_report_path, :html => { :class => "form-search well"} do |f| %>
+  <h2>Search</h2>
+  <%= f.label :title_cont, "Title:" %>
+  <%= f.text_field :title_cont %>
+  <br class="visible-phone" />
+  <%= f.label "Date:" %>
+  <% if @date_gteq %>
+    <%= f.text_field :date_gteq, :'data-behaviour' => 'datepicker', :'data-date-format' => 'mm/dd/yy', :class => 'input-small', :value => Date.today %> -
+  <% else %>
+    <%= f.text_field :date_gteq, :'data-behaviour' => 'datepicker', :'data-date-format' => 'mm/dd/yy', :class => 'input-small' %> -
+  <% end %>
+  <%= f.text_field :date_lteq, :'data-behaviour' => 'datepicker', :'data-date-format' => 'mm/dd/yy', :class => 'input-small' %>
+  <br class="visible-phone visible-tablet" />
+  <%= f.label :credit_type_id_eq, "Credit:" %>
+  <%= f.select :credit_type_id_eq, CreditType.all.collect {|c| [ c.name, c.id ] }, {:include_blank => true}, :class => 'input-small' %>
+  <br class="visible-phone" />
+  <%= f.label :event_type_id_eq, "Type:" %>
+  <%= f.select :event_type_id_eq, EventType.all.collect {|c| [ c.name, c.id ] }, {:include_blank => true}, :class => 'input-medium' %>
+  <%= f.submit "Search", :class => "btn btn-primary" %>
+<% end %>
