@@ -14,7 +14,7 @@
   <tbody>
     <% @events.each do |event| %>
       <% @registration = Registration.find_by_user_id_and_event_id(current_user, event.id) %>
-      <% @registrations = event.registrations.where("registration_status_id != ? AND registration_status_id != ?", canceled_id, did_not_attend_id).order("updated_at") %>
+      <% @registrations = event.registrations.where("registration_status_id != ? AND registration_status_id != ?", @canceled_id, @did_not_attend_id).order("updated_at") %>
       <tr class="<%= table_status(@registration.registration_status.name) if @registration %>">
         <td><%= link_to event.title, event %></td>
         <td><%= time_tag(event.date) %></td>
