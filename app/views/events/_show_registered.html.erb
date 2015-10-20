@@ -2,12 +2,7 @@
   <ul>
   <% @registrations.each do |registration| %>
     <li class="text-<%= table_status(registration.registration_status.name) if registration%>">
-      <%= link_to registration.user.name, registration.user if registration %>
-      <% if can? :update, registration %>
-        <span class="pull-right">
-          <%= link_to "Edit", user_event_registration_path(registration.user, registration.event) if registration %>
-        </span>
-      <% end %>
+      <%= registration.user.name if registration %>
     </li>
   <% end %>
   </ul>
