@@ -1,0 +1,11 @@
+<div class="page-header">
+  <h1>Events</h1>
+</div>
+
+<%= render :partial => "search_form" %>
+
+<%= render :partial => "report_results" %>
+
+<% if can? :edit, Event %>
+  <%= link_to 'New Event', new_event_path, :class => "btn btn-primary" %>
+<% end %>

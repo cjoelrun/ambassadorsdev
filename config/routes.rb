@@ -33,6 +33,7 @@ Ambassadors::Application.routes.draw do
   match 'about_ait' => 'home#about_ait'
   match 'ambassadors_letter' => 'home#ambassadors_letter'
   match 'ait_letter' => 'home#ait_letter'
+  match 'events_report' => 'events#report'
 
   authenticated :user do
     root :to => 'home#index'
