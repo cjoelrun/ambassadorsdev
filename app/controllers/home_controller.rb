@@ -8,7 +8,8 @@ class HomeController < ApplicationController
 
       @my_events = current_user.events.find(:all, :conditions => ['date + start_time >= ?', DateTime.new(DateTime.now.year, DateTime.now.month, DateTime.now.day, DateTime.now.hour, DateTime.now.min, DateTime.now.second, 0)], :order => "date, start_time", :limit => 5)
 
-      @birthdays = User.find_birthdays_for(Date.today.beginning_of_month, Date.today.end_of_month)
+      retired_id = Role.find_by_name("retired").id
+      @birthdays = User.find_birthdays_for(Date.today.beginning_of_month, Date.today.end_of_month).includes(:roles).where("roles.id != ?", retired_id)
 
       @event_type = CreditType.find_by_name("Event")
       @committee_type = CreditType.find_by_name("Committee")
